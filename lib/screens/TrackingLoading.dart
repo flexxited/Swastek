@@ -1,3 +1,4 @@
+import 'package:flexxited_swastek/screens/start_tracking_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -118,10 +119,13 @@ class TrackingDialog extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 300.w),
-                child: Icon(
-                  Icons.close,
-                  size: 16.sp,
-                  color: Color(0xff000000),
+                child: GestureDetector(
+                  onTap: () => Get.to(StartTracking()),
+                  child: Icon(
+                    Icons.close,
+                    size: 16.sp,
+                    color: Color(0xff000000),
+                  ),
                 ),
               ),
               Padding(

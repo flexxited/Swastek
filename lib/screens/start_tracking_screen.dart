@@ -13,17 +13,20 @@ class StartTracking extends StatefulWidget {
 
 class _StartTrackingState extends State<StartTracking> {
   @override
-  void init() {
-    TrackingController trackingController = Get.put(TrackingController());
-  }
-
   List<Widget> items = [
     Text(""),
     UntrackedCardColumn(heading: "Heart Rate"),
     UntrackedCardColumn(heading: "Blood Pressure"),
     Text("")
   ];
+  List<Widget> updatedItems = [
+    Text(""),
+    TrackedCardColumn(),
+    UntrackedCardColumn(heading: "Blood Pressure"),
+    Text("")
+  ];
 
+  final TrackingController trackController = Get.find();
   int focusedIndex = 0;
 
   Widget build(BuildContext context) {
@@ -65,108 +68,129 @@ class _StartTrackingState extends State<StartTracking> {
                 )
               ],
             ),
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 62.h),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 174.w),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "My Board",
-                          style: TextStyle(
-                              fontSize: 16.sp,
-                              color: Color(0xffF9F9F9),
-                              fontFamily: "MonsBold"),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 9.w),
-                          child: Icon(
-                            Icons.menu,
-                            color: Theme.of(context).accentColor,
-                            size: 18.sp,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 9.h),
-                  child: Center(
-                    child: Text("Last synced 0 minutes ago",
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontFamily: "MonsReg",
-                            color: Color(0xffBCBCBC))),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 37.h),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 359.h,
-                    child: ScrollSnapList(
-                      itemBuilder: buildItems,
-                      itemCount: items.length,
-                      itemSize: 210.w,
-                      dynamicItemSize: true,
-                      onItemFocus: (ind) {
-                        setState(() {
-                          focusedIndex = ind;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 65.h),
-                  child: Center(child:
-                      GetBuilder<TrackingController>(builder: (controller) {
-                    return GestureDetector(
-                      onTap: () {
-                        Get.to(TrackingLoading());
-                        controller.isStartTracking.toggle();
-                      },
-                      child: Container(
-                        height: 52.h,
-                        width: 288.w,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).accentColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(23))),
-                        child: Center(
-                          child: Text(
-                            "Start Tracking",
+            body: Obx(() {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 62.h),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 174.w),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "My Board",
                             style: TextStyle(
-                                fontFamily: "MonsMed",
                                 fontSize: 16.sp,
-                                color: Color(0xff000000)),
+                                color: Color(0xffF9F9F9),
+                                fontFamily: "MonsBold"),
                           ),
-                        ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 9.w),
+                            child: Icon(
+                              Icons.menu,
+                              color: Theme.of(context).accentColor,
+                              size: 18.sp,
+                            ),
+                          )
+                        ],
                       ),
-                    );
-                  })),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 213.h),
-                  child: Center(
-                    child: Text(
-                      "Connected to Device GHIJKL",
-                      style: TextStyle(
-                          color: Color(0xffF9F9F9),
-                          fontSize: 12.sp,
-                          fontFamily: "SeogeReg"),
                     ),
                   ),
-                )
-              ],
-            )));
+                  Padding(
+                    padding: EdgeInsets.only(top: 9.h),
+                    child: Center(
+                      child: Text("Last synced 0 minutes ago",
+                          style: TextStyle(
+                              fontSize: 12.sp,
+                              fontFamily: "MonsReg",
+                              color: Color(0xffBCBCBC))),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 37.h),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 359.h,
+                      child: ScrollSnapList(
+                        itemBuilder: buildItems,
+                        itemCount: items.length,
+                        itemSize: 210.w,
+                        dynamicItemSize: true,
+                        onItemFocus: (ind) {
+                          setState(() {
+                            focusedIndex = ind;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 65.h),
+                    child: Center(
+                        child: trackController.isStartTracking.value
+                            ? Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  BottomNoBorderButton(
+                                    text: "Measure",
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 10.h),
+                                    child: Container(
+                                      width: 288.w,
+                                      height: 52.h,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Theme.of(context)
+                                                  .accentColor),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(23))),
+                                      child: Center(
+                                        child: Text(
+                                          "View Vital",
+                                          style: TextStyle(
+                                              fontSize: 16.sp,
+                                              fontFamily: "MonsMed",
+                                              color: Color(0xffF9F9F9)),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
+                            : GestureDetector(
+                                onTap: () {
+                                  Get.to(TrackingLoading());
+                                  trackController.isStartTracking.toggle();
+                                },
+                                child: BottomNoBorderButton(
+                                  text: "Start Tracking",
+                                ),
+                              )),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: trackController.isStartTracking.value
+                            ? 151.h
+                            : 213.h),
+                    child: Center(
+                      child: Text(
+                        "Connected to Device GHIJKL",
+                        style: TextStyle(
+                            color: Color(0xffF9F9F9),
+                            fontSize: 12.sp,
+                            fontFamily: "SeogeReg"),
+                      ),
+                    ),
+                  )
+                ],
+              );
+            })));
   }
 
   Widget buildItems(BuildContext context, int index) {
@@ -178,7 +202,33 @@ class _StartTrackingState extends State<StartTracking> {
           decoration: BoxDecoration(
               color: Color(0xffF9F9F9),
               borderRadius: BorderRadius.all(Radius.circular(23))),
-          child: items[index]),
+          child: Obx(() {
+            return trackController.isStartTracking.value
+                ? updatedItems[index]
+                : items[index];
+          })),
+    );
+  }
+}
+
+class BottomNoBorderButton extends StatelessWidget {
+  String text;
+  BottomNoBorderButton({required this.text});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 52.h,
+      width: 288.w,
+      decoration: BoxDecoration(
+          color: Theme.of(context).accentColor,
+          borderRadius: BorderRadius.all(Radius.circular(23))),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(
+              fontFamily: "MonsMed", fontSize: 16.sp, color: Color(0xff000000)),
+        ),
+      ),
     );
   }
 }
@@ -284,10 +334,15 @@ class UntrackedCardColumn extends StatelessWidget {
                 fontFamily: "MonsBold"),
           ),
         ),
-        Text(
-          "No entries yet",
-          style: TextStyle(
-              fontSize: 12.sp, color: Color(0xff000000), fontFamily: "MonsReg"),
+        Padding(
+          padding: EdgeInsets.only(top: 119.h),
+          child: Text(
+            "No entries yet",
+            style: TextStyle(
+                fontSize: 12.sp,
+                color: Color(0xff000000),
+                fontFamily: "MonsReg"),
+          ),
         )
       ],
     );
