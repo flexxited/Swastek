@@ -24,7 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  lint:
+  flutter_screenutil: ^5.0.0+2
+  get: ^4.3.8
   scroll_snap_list: ^0.8.2
 
 
@@ -36,8 +37,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_screenutil: ^5.0.0+2
-  get: ^4.3.8
+
+  lint:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -74,6 +75,11 @@ flutter:
     - family: SegoeReg
       fonts:
         - asset: assets/fonts/SegoeUI-Regular.ttf
+
+    - family: SegoeBold
+      fonts:
+        - asset: assets/fonts/SegoeUI-Bold.ttf
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
