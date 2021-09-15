@@ -1,7 +1,4 @@
 import 'package:flexxited_swastek/screens/login_page.dart';
-import 'package:flexxited_swastek/screens/onboarding_1.dart';
-import 'package:flexxited_swastek/screens/onboarding_2.dart';
-import 'package:flexxited_swastek/screens/onboarding_3.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -12,26 +9,24 @@ class ReusableOnboardingScreen extends StatelessWidget {
   final String image;
   final int next;
   final bool isOnboarding3;
-  @override
-  ReusableOnboardingScreen(
+  final Function onNext;
+
+  const ReusableOnboardingScreen(
       {required this.image,
       required this.text,
       required this.heading,
       required this.next,
-      this.isOnboarding3 = false});
-
-  final List<Widget> onboardingScreens = [Onboarding2(), Onboarding3()];
-
+      this.isOnboarding3 = false,
+      required this.onNext});
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Padding(
           padding: EdgeInsets.only(top: 30.h),
-          child: Container(
+          child: SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   width: 67.w,
@@ -45,12 +40,12 @@ class ReusableOnboardingScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 24.sp,
                         fontFamily: "MonsBold",
-                        color: Color(0xffDADBDE)),
+                        color: const Color(0xffDADBDE)),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 23.h),
-                  child: Container(
+                  child: SizedBox(
                     width: 308.w,
                     height: 108.h,
                     child: Text(
@@ -58,7 +53,7 @@ class ReusableOnboardingScreen extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 16.sp,
                           fontFamily: "SegoeReg",
-                          color: Color(0xffBCBCBC)),
+                          color: const Color(0xffBCBCBC)),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -71,12 +66,14 @@ class ReusableOnboardingScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: isOnboarding3 ? 109.h : 89.h),
                   child: isOnboarding3
-                      ? Container(
+                      ? SizedBox(
                           width: 288.w,
                           height: 52.h,
                           child: MaterialButton(
-                            onPressed: () => Get.to(LoginPage()),
-                            shape: RoundedRectangleBorder(
+                            onPressed: () {
+                              onNext();
+                            },
+                            shape: const RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                             color: Theme.of(context).accentColor,
@@ -87,14 +84,16 @@ class ReusableOnboardingScreen extends StatelessWidget {
                                 "Get Started",
                                 style: TextStyle(
                                     fontSize: 16.sp,
-                                    color: Color(0xff22273A),
+                                    color: const Color(0xff22273A),
                                     fontFamily: "MonsReg"),
                               ),
                             ),
                           ),
                         )
                       : GestureDetector(
-                          onTap: () => Get.to(onboardingScreens[next]),
+                          onTap: () {
+                            onNext();
+                          },
                           child: Image.asset(
                             "assets/images/arrow_right.png",
                             width: 78.w,

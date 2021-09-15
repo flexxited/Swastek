@@ -24,7 +24,7 @@ class SplashController extends GetxController {
     user.fold(
       () {
         // person.value = null;
-        Get.offAllNamed(Routes.LOGIN);
+        Get.offAllNamed(Routes.ONBOARDING);
       },
       (a) {
         // person.value = a;
