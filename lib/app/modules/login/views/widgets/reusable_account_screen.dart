@@ -1,5 +1,4 @@
 import 'package:flexxited_swastek/app/modules/login/controllers/login_controller.dart';
-import 'package:flexxited_swastek/screens/bluetooth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
