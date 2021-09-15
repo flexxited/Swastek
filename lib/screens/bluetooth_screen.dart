@@ -10,9 +10,8 @@ class BluetoothScreen extends StatefulWidget {
 }
 
 class _BluetoothScreenState extends State<BluetoothScreen> {
-  @override
   bool val = true;
-
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -23,18 +22,16 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
             height: 610.h,
             decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(23)),
+                borderRadius: const BorderRadius.all(Radius.circular(23)),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.black54.withOpacity(0.3),
                       blurRadius: 12,
-                      offset: Offset(2, 2))
+                      offset: const Offset(2, 2))
                 ]),
             child: Padding(
               padding: EdgeInsets.only(left: 28.w, right: 28.w, top: 50.h),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     height: 71.h,
@@ -47,7 +44,7 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                       "Connect to a Device",
                       style: TextStyle(
                           fontSize: 20.sp,
-                          color: Color(0xffBCBCBC),
+                          color: const Color(0xffBCBCBC),
                           fontFamily: "MonsBold"),
                     ),
                   ),
@@ -59,7 +56,7 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                             ? Container(
                                 width: 312.w,
                                 height: 327.h,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Color(0xffF9F9F9),
                                     borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(8),
@@ -68,28 +65,27 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                                   padding:
                                       EdgeInsets.only(top: 55.h, left: 31.w),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      RowBluetoothDevices(
+                                      const RowBluetoothDevices(
                                         deviceName: "ABCDEF",
                                         padding: 30,
                                       ),
-                                      RowBluetoothDevices(
+                                      const RowBluetoothDevices(
                                         padding: 12,
                                         deviceName: "GHIJKL",
                                         isConnected: true,
                                       ),
-                                      RowBluetoothDevices(
+                                      const RowBluetoothDevices(
                                           padding: 30, deviceName: "MNOPQR"),
-                                      RowBluetoothDevices(
+                                      const RowBluetoothDevices(
                                           padding: 30, deviceName: "STUVWX")
                                     ],
                                   ),
                                 ),
                               )
-                            : Container(
+                            : SizedBox(
                                 width: 312.w,
                                 height: 327.h,
                               ),
@@ -100,15 +96,15 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                           width: 312.w,
                           height: 51.h,
                           decoration: BoxDecoration(
-                              color: Color(0xffF9F9F9),
+                              color: const Color(0xffF9F9F9),
                               boxShadow: [
                                 BoxShadow(
                                     color: Colors.black54.withOpacity(0.3),
                                     blurRadius: 12,
-                                    offset: Offset(2, 2))
+                                    offset: const Offset(2, 2))
                               ],
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(26))),
+                                  const BorderRadius.all(Radius.circular(26))),
                           child: Row(
                             children: [
                               Padding(
@@ -118,7 +114,7 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                                   style: TextStyle(
                                       fontSize: 16.sp,
                                       fontFamily: "MonsReg",
-                                      color: Color(0xff22273A)),
+                                      color: const Color(0xff22273A)),
                                 ),
                               ),
                               Padding(
@@ -151,7 +147,7 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                       child: Text(
                         "Skip for now",
                         style: TextStyle(
-                            color: Color(0xff00D0C3),
+                            color: const Color(0xff00D0C3),
                             fontSize: 12.sp,
                             fontFamily: "MonsReg"),
                       ),
@@ -182,23 +178,21 @@ class RowBluetoothDevices extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 15.h),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundColor: Color(0xffC7F5F2),
+            backgroundColor: const Color(0xffC7F5F2),
             radius: 11.w,
           ),
           Padding(
             padding: EdgeInsets.only(left: 11.w),
-            child: Container(
+            child: SizedBox(
               width: 125.w,
               child: Text(
                 deviceName,
                 style: TextStyle(
                     fontSize: 16.sp,
                     fontFamily: "MonsReg",
-                    color: Color(0xff000000)),
+                    color: const Color(0xff000000)),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -210,7 +204,9 @@ class RowBluetoothDevices extends StatelessWidget {
               style: TextStyle(
                   fontSize: isConnected ? 14.sp : 12.sp,
                   fontFamily: "MonsReg",
-                  color: isConnected ? Color(0xff000000) : Color(0xff00D0C3)),
+                  color: isConnected
+                      ? const Color(0xff000000)
+                      : const Color(0xff00D0C3)),
             ),
           )
         ],

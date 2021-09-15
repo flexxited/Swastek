@@ -12,23 +12,23 @@ class StartTracking extends StatefulWidget {
 }
 
 class _StartTrackingState extends State<StartTracking> {
-  @override
   List<Widget> items = [
-    Text(""),
-    UntrackedCardColumn(heading: "Heart Rate"),
-    UntrackedCardColumn(heading: "Blood Pressure"),
-    Text("")
+    const Text(""),
+    const UntrackedCardColumn(heading: "Heart Rate"),
+    const UntrackedCardColumn(heading: "Blood Pressure"),
+    const Text("")
   ];
   List<Widget> updatedItems = [
-    Text(""),
+    const Text(""),
     TrackedCardColumn(),
-    UntrackedCardColumn(heading: "Blood Pressure"),
-    Text("")
+    const UntrackedCardColumn(heading: "Blood Pressure"),
+    const Text("")
   ];
 
   final TrackingController trackController = Get.find();
   int focusedIndex = 0;
 
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
@@ -39,7 +39,7 @@ class _StartTrackingState extends State<StartTracking> {
                 color: Theme.of(context).accentColor,
               ),
               actions: [
-                Container(
+                SizedBox(
                   width: 102.w,
                   height: 27.h,
                   child: Padding(
@@ -70,7 +70,6 @@ class _StartTrackingState extends State<StartTracking> {
             ),
             body: Obx(() {
               return Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
@@ -78,14 +77,12 @@ class _StartTrackingState extends State<StartTracking> {
                     child: Padding(
                       padding: EdgeInsets.only(left: 174.w),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             "My Board",
                             style: TextStyle(
                                 fontSize: 16.sp,
-                                color: Color(0xffF9F9F9),
+                                color: const Color(0xffF9F9F9),
                                 fontFamily: "MonsBold"),
                           ),
                           Padding(
@@ -107,12 +104,12 @@ class _StartTrackingState extends State<StartTracking> {
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontFamily: "MonsReg",
-                              color: Color(0xffBCBCBC))),
+                              color: const Color(0xffBCBCBC))),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 37.h),
-                    child: Container(
+                    child: SizedBox(
                       width: MediaQuery.of(context).size.width,
                       height: 359.h,
                       child: ScrollSnapList(
@@ -136,7 +133,7 @@ class _StartTrackingState extends State<StartTracking> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  BottomNoBorderButton(
+                                  const BottomNoBorderButton(
                                     text: "Measure",
                                   ),
                                   Padding(
@@ -148,7 +145,7 @@ class _StartTrackingState extends State<StartTracking> {
                                           border: Border.all(
                                               color: Theme.of(context)
                                                   .accentColor),
-                                          borderRadius: BorderRadius.all(
+                                          borderRadius: const BorderRadius.all(
                                               Radius.circular(23))),
                                       child: Center(
                                         child: Text(
@@ -156,7 +153,7 @@ class _StartTrackingState extends State<StartTracking> {
                                           style: TextStyle(
                                               fontSize: 16.sp,
                                               fontFamily: "MonsMed",
-                                              color: Color(0xffF9F9F9)),
+                                              color: const Color(0xffF9F9F9)),
                                         ),
                                       ),
                                     ),
@@ -168,7 +165,7 @@ class _StartTrackingState extends State<StartTracking> {
                                   Get.to(TrackingLoading());
                                   trackController.isStartTracking.toggle();
                                 },
-                                child: BottomNoBorderButton(
+                                child: const BottomNoBorderButton(
                                   text: "Start Tracking",
                                 ),
                               )),
@@ -182,7 +179,7 @@ class _StartTrackingState extends State<StartTracking> {
                       child: Text(
                         "Connected to Device GHIJKL",
                         style: TextStyle(
-                            color: Color(0xffF9F9F9),
+                            color: const Color(0xffF9F9F9),
                             fontSize: 12.sp,
                             fontFamily: "SeogeReg"),
                       ),
@@ -199,7 +196,7 @@ class _StartTrackingState extends State<StartTracking> {
       child: Container(
           width: 190.w,
           height: 259.h,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               color: Color(0xffF9F9F9),
               borderRadius: BorderRadius.all(Radius.circular(23))),
           child: Obx(() {
@@ -221,7 +218,7 @@ class BottomNoBorderButton extends StatelessWidget {
       width: 288.w,
       decoration: BoxDecoration(
           color: Theme.of(context).accentColor,
-          borderRadius: BorderRadius.all(Radius.circular(23))),
+          borderRadius: const BorderRadius.all(Radius.circular(23))),
       child: Center(
         child: Text(
           text,
@@ -239,9 +236,8 @@ class TrackedCardColumn extends StatefulWidget {
 }
 
 class _TrackedCardColumnState extends State<TrackedCardColumn> {
-  @override
   double val = 40;
-
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24.h),
@@ -254,7 +250,7 @@ class _TrackedCardColumnState extends State<TrackedCardColumn> {
             style: TextStyle(
                 fontSize: 24.sp,
                 fontFamily: "MonsBold",
-                color: Color(0xff22273A)),
+                color: const Color(0xff22273A)),
           ),
           Padding(
             padding: EdgeInsets.only(top: 9.h),
@@ -268,7 +264,7 @@ class _TrackedCardColumnState extends State<TrackedCardColumn> {
           ),
           Padding(
             padding: EdgeInsets.only(top: 7.h),
-            child: Container(
+            child: SizedBox(
               width: 125.w,
               height: 145.h,
               child: Column(
@@ -279,7 +275,7 @@ class _TrackedCardColumnState extends State<TrackedCardColumn> {
                     "72",
                     style: TextStyle(
                         fontSize: 109.sp,
-                        color: Color(0xff000000),
+                        color: const Color(0xff000000),
                         fontFamily: "SeogeBold"),
                   ),
                   Text(
@@ -287,7 +283,7 @@ class _TrackedCardColumnState extends State<TrackedCardColumn> {
                     style: TextStyle(
                         fontSize: 12.sp,
                         fontFamily: "MonsReg",
-                        color: Color(0xff000000)),
+                        color: const Color(0xff000000)),
                   ),
                 ],
               ),
@@ -330,7 +326,7 @@ class UntrackedCardColumn extends StatelessWidget {
             heading,
             style: TextStyle(
                 fontSize: 24.sp,
-                color: Color(0xff22273A),
+                color: const Color(0xff22273A),
                 fontFamily: "MonsBold"),
           ),
         ),
@@ -340,7 +336,7 @@ class UntrackedCardColumn extends StatelessWidget {
             "No entries yet",
             style: TextStyle(
                 fontSize: 12.sp,
-                color: Color(0xff000000),
+                color: const Color(0xff000000),
                 fontFamily: "MonsReg"),
           ),
         )
