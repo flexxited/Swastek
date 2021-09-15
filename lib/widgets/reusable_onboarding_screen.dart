@@ -7,13 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ReusableOnboardingScreen extends StatelessWidget {
+  final String heading;
+  final String text;
+  final String image;
+  final int next;
+  final bool isOnboarding3;
   @override
-  String heading;
-  String text;
-  String image;
-  int next;
-  bool isOnboarding3;
-
   ReusableOnboardingScreen(
       {required this.image,
       required this.text,
@@ -21,7 +20,7 @@ class ReusableOnboardingScreen extends StatelessWidget {
       required this.next,
       this.isOnboarding3 = false});
 
-  List<Widget> onboardingScreens = [Onboarding2(), Onboarding3()];
+  final List<Widget> onboardingScreens = [Onboarding2(), Onboarding3()];
 
   Widget build(BuildContext context) {
     return SafeArea(

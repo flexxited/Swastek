@@ -168,11 +168,11 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
 }
 
 class RowBluetoothDevices extends StatelessWidget {
-  String deviceName;
-  double padding;
-  bool isConnected;
+  final String deviceName;
+  final double padding;
+  final bool isConnected;
 
-  RowBluetoothDevices(
+  const RowBluetoothDevices(
       {this.isConnected = false,
       required this.padding,
       required this.deviceName});

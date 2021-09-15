@@ -264,9 +264,9 @@ class _TrackedCardColumnState extends State<TrackedCardColumn> {
 }
 
 class UntrackedCardColumn extends StatelessWidget {
-  String heading;
+  final String heading;
 
-  UntrackedCardColumn({required this.heading});
+  const UntrackedCardColumn({required this.heading});
 
   @override
   Widget build(BuildContext context) {

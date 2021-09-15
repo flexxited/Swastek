@@ -6,14 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ReusableAccountPage extends StatefulWidget {
-  String heading;
-  String textFieldLabel;
-  bool isSuffix;
-  String secondButtonText;
-  String firstButtonText;
-  int next;
+  final String heading;
+  final String textFieldLabel;
+  final bool isSuffix;
+  final String secondButtonText;
+  final String firstButtonText;
+  final int next;
 
-  ReusableAccountPage(
+  const ReusableAccountPage(
       {required this.isSuffix,
       required this.heading,
       required this.secondButtonText,
@@ -190,10 +190,10 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
 }
 
 class ReusableUnderlineLabelTextField extends StatelessWidget {
-  String label;
-  String suffix;
-  bool isSuffix;
-  ReusableUnderlineLabelTextField(
+  final String label;
+  final String suffix;
+  final bool isSuffix;
+  const ReusableUnderlineLabelTextField(
       {required this.label, this.isSuffix = false, this.suffix = "Forgot?"});
 
   @override
