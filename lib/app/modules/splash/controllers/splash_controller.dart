@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 
-class SplashController extends GetxController {
-  //TODO: Implement SplashController
+import '../../../../domain/auth/i_auth_repo.dart';
+import '../../../routes/app_pages.dart';
 
-  final count = 0.obs;
+class SplashController extends GetxController {
+  final IAuth _auth;
+
+  SplashController(this._auth);
   @override
   void onInit() {
     super.onInit();
@@ -16,5 +19,17 @@ class SplashController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
+  void authCheckRequested() async {
+    var user = await _auth.getSignedInAdmin();
+    user.fold(
+      () {
+        // person.value = null;
+        Get.offAllNamed(Routes.LOGIN);
+      },
+      (a) {
+        // person.value = a;
+        Get.offAllNamed(Routes.HOME);
+      },
+    );
+  }
 }
