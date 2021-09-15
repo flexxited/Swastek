@@ -1,4 +1,4 @@
-package com.example.flexxited_swastek
+package com.swastek.userapp
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flexxited_swastek">
+    package="com.swastek.userapp">
    <application
         android:label="flexxited_swastek"
         android:icon="@mipmap/ic_launcher">
