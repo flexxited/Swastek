@@ -1,4 +1,4 @@
-import 'package:flexxited_swastek/widgets/reusable_account_screen.dart';
+import 'package:flexxited_swastek/app/modules/login/views/widgets/reusable_account_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

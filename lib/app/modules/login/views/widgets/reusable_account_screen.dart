@@ -1,6 +1,4 @@
 import 'package:flexxited_swastek/screens/bluetooth_screen.dart';
-import 'package:flexxited_swastek/screens/login_page.dart';
-import 'package:flexxited_swastek/screens/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,7 +25,7 @@ class ReusableAccountPage extends StatefulWidget {
 
 class _ReusableAccountPageState extends State<ReusableAccountPage> {
   int? radioActiveValue = 0;
-  List<Widget> account_screens = [LoginPage(), SignUpPage()];
+  // List<Widget> account_screens = [LoginPage(), SignUpPage()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,29 +37,23 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
             height: 610.h,
             decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(23)),
+                borderRadius: const BorderRadius.all(Radius.circular(23)),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.black54.withOpacity(0.3),
                       blurRadius: 12,
-                      offset: Offset(2, 2))
+                      offset: const Offset(2, 2))
                 ]),
             child: Padding(
               padding: EdgeInsets.only(left: 20.w, right: 40.w, top: 50.h),
               child: SingleChildScrollView(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20.w),
-                        child: Container(
-                          width: 93.w,
-                          height: 71.h,
-                          color: Theme.of(context).accentColor,
-                        ),
-                      ),
+                          padding: EdgeInsets.only(left: 20.w),
+                          child: Image.asset("assets/images/logo.png")),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 28.h),
@@ -71,7 +63,7 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                           child: Text(
                             widget.heading,
                             style: TextStyle(
-                                color: Color(0xffBCBCBC),
+                                color: const Color(0xffBCBCBC),
                                 fontSize: 20.sp,
                                 fontFamily: "MonsBold"),
                           ),
@@ -80,7 +72,7 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 36.h, left: 20.w),
-                      child: ReusableUnderlineLabelTextField(
+                      child: const ReusableUnderlineLabelTextField(
                         label: "Username/ Email",
                       ),
                     ),
@@ -89,7 +81,6 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                       child: ReusableUnderlineLabelTextField(
                         label: widget.textFieldLabel,
                         isSuffix: widget.isSuffix,
-                        suffix: "Forgot?",
                       ),
                     ),
                     Padding(
@@ -102,12 +93,10 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 5.w),
-                      child: Container(
+                      child: SizedBox(
                         height: 18.h,
                         width: 140.w,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Radio(
                               value: 1,
@@ -118,8 +107,8 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                                 });
                               },
                               //activeColor: Theme.of(context).accentColor,
-                              fillColor:
-                                  MaterialStateProperty.all(Color(0xffBCBCBC)),
+                              fillColor: MaterialStateProperty.all(
+                                  const Color(0xffBCBCBC)),
                               splashRadius: 0,
                             ),
                             Text(
@@ -127,7 +116,7 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                               style: TextStyle(
                                   fontSize: 12.sp,
                                   fontFamily: "MonsReg",
-                                  color: Color(0xffBCBCBC)),
+                                  color: const Color(0xffBCBCBC)),
                             ),
                           ],
                         ),
@@ -141,7 +130,8 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                           width: 288.w,
                           height: 52.h,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             color: Theme.of(context).accentColor,
                           ),
                           child: Center(
@@ -150,7 +140,7 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                               style: TextStyle(
                                   fontSize: 16.sp,
                                   fontFamily: "MonsReg",
-                                  color: Color(0xff22273A)),
+                                  color: const Color(0xff22273A)),
                             ),
                           ),
                         ),
@@ -159,13 +149,15 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                     Padding(
                       padding: EdgeInsets.only(top: 10.h, left: 20.w),
                       child: GestureDetector(
-                        onTap: () => Get.to(account_screens[widget.next]),
+                        onTap: () {
+                          // Get.to(account_screens[widget.next]);
+                        },
                         child: Container(
                           width: 288.w,
                           height: 52.h,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               border: Border.all(
                                   color: Theme.of(context).accentColor)),
                           child: Center(
@@ -174,7 +166,7 @@ class _ReusableAccountPageState extends State<ReusableAccountPage> {
                               style: TextStyle(
                                   fontSize: 16.sp,
                                   fontFamily: "MonsReg",
-                                  color: Color(0xffBCBCBC)),
+                                  color: const Color(0xffBCBCBC)),
                             ),
                           ),
                         ),
@@ -200,23 +192,27 @@ class ReusableUnderlineLabelTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       style: TextStyle(
-          color: Color(0xffBCBCBC), fontSize: 16.sp, fontFamily: "MonsReg"),
-      cursorColor: Color(0xffBCBCBC),
+          color: const Color(0xffBCBCBC),
+          fontSize: 16.sp,
+          fontFamily: "MonsReg"),
+      cursorColor: const Color(0xffBCBCBC),
       decoration: InputDecoration(
         labelText: label,
         labelStyle: TextStyle(
-            color: Color(0xffBCBCBC), fontSize: 16.sp, fontFamily: "MonsReg"),
+            color: const Color(0xffBCBCBC),
+            fontSize: 16.sp,
+            fontFamily: "MonsReg"),
         suffixText: isSuffix ? suffix : "",
         suffixStyle: isSuffix
             ? TextStyle(
-                color: Color(0xffBCBCBC),
+                color: const Color(0xffBCBCBC),
                 fontSize: 12.sp,
                 fontFamily: "MonsReg")
             : null,
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Color(0xffBCBCBC)),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Color(0xffBCBCBC)),
         ),
       ),

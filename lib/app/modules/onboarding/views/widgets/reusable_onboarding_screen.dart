@@ -1,7 +1,5 @@
-import 'package:flexxited_swastek/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class ReusableOnboardingScreen extends StatelessWidget {
   final String heading;
@@ -28,11 +26,7 @@ class ReusableOnboardingScreen extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
-                Container(
-                  width: 67.w,
-                  height: 51.h,
-                  color: Theme.of(context).accentColor,
-                ),
+                Image.asset("assets/images/logo.png"),
                 Padding(
                   padding: EdgeInsets.only(top: 64.h),
                   child: Text(

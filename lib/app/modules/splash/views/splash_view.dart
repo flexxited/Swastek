@@ -16,6 +16,7 @@ class SplashView extends GetView<SplashController> {
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
+                Image.asset("assets/images/logo3x.png"),
                 SizedBox(
                   width: 243.w,
                   height: 189.h,
