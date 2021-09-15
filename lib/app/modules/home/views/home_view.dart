@@ -105,12 +105,16 @@ class HomeView extends GetView<HomeController> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(left: 23.w),
-                                child: Text(
-                                  true ? "Bluetooth On" : "Bluetooth Off",
-                                  style: TextStyle(
-                                      fontSize: 16.sp,
-                                      fontFamily: "MonsReg",
-                                      color: const Color(0xff22273A)),
+                                child: Obx(
+                                  () => Text(
+                                    controller.isBluetoothOn.value
+                                        ? "Bluetooth On"
+                                        : "Bluetooth Off",
+                                    style: TextStyle(
+                                        fontSize: 16.sp,
+                                        fontFamily: "MonsReg",
+                                        color: const Color(0xff22273A)),
+                                  ),
                                 ),
                               ),
                               Padding(

@@ -14,6 +14,7 @@ dependencies:
   cloud_firestore:
 
   dartz:
+  flutter_blue:
   freezed_annotation:
   firebase_auth:
   firebase_core:
