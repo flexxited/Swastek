@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  app_settings: ^4.1.1
+
   cloud_firestore:
 
   dartz:

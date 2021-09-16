@@ -30,4 +30,42 @@ class BluetoothRepo extends GetxService implements IBlueRepo {
       return left<Exception, BluetoothState>(Exception(""));
     });
   }
+
+  @override
+  Stream<Either<Exception, BluetoothDevice>> scanForDevice() async* {
+    yield* flutterBlue
+        .scan(timeout: const Duration(seconds: 60))
+        .map((scanResult) {
+      debugPrint('localName: ${scanResult.advertisementData.localName}');
+      debugPrint(
+          'manufacturerData: ${scanResult.advertisementData.manufacturerData}');
+      debugPrint('serviceData: ${scanResult.advertisementData.toString()}');
+      debugPrint('device: ${scanResult.device.toString()}');
+
+      debugPrint(
+          'DeviceServices: ${scanResult.advertisementData.serviceUuids.toString()}');
+      return right<Exception, BluetoothDevice>(scanResult.device);
+    }).onErrorReturnWith((error) {
+      debugPrint("Unexpected Error $error");
+      // _crashlytics.recordError(e, s, reason: "CatagoryRepo:getCatagories");
+      return left<Exception, BluetoothDevice>(Exception(""));
+    });
+  }
+
+  @override
+  Future<Unit> stopScan() async {
+    debugPrint("************************ stop scaaning");
+    await flutterBlue.stopScan();
+    return unit;
+  }
+
+  @override
+  Stream<Either<Exception, bool>> isScanning() async* {
+    debugPrint("********************** is scanning repo");
+    yield* flutterBlue.isScanning
+        .map((event) => right<Exception, bool>(event))
+        .onErrorReturnWith((error) {
+      return left<Exception, bool>(Exception(error));
+    });
+  }
 }

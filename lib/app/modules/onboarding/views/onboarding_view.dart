@@ -23,7 +23,7 @@ class OnboardingView extends GetView<OnboardingController> {
               debugPrint("OnNext Callback 0");
               controller.pageController.animateToPage(1,
                   duration: const Duration(milliseconds: 600),
-                  curve: Curves.bounceIn);
+                  curve: Curves.easeIn);
             },
           ),
           ReusableOnboardingScreen(
@@ -36,7 +36,7 @@ class OnboardingView extends GetView<OnboardingController> {
               debugPrint("OnNext Callback 1");
               controller.pageController.animateToPage(2,
                   duration: const Duration(milliseconds: 600),
-                  curve: Curves.bounceIn);
+                  curve: Curves.easeIn);
             },
           ),
           ReusableOnboardingScreen(

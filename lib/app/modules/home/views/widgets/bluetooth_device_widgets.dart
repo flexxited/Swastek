@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RowBluetoothDevices extends StatelessWidget {
-  final String deviceName;
+  // final String deviceName;
   final double padding;
-  final bool isConnected;
+  // final bool isConnected;
 
-  const RowBluetoothDevices(
-      {this.isConnected = false,
-      required this.padding,
-      required this.deviceName});
+  final BluetoothDevice device;
+
+  const RowBluetoothDevices({
+    // this.isConnected = false,
+    required this.padding,
+    // required this.deviceName,
+    required this.device,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class RowBluetoothDevices extends StatelessWidget {
             child: SizedBox(
               width: 125.w,
               child: Text(
-                deviceName,
+                device.name.isNotEmpty ? device.name : device.id.toString(),
                 style: TextStyle(
                     fontSize: 16.sp,
                     fontFamily: "MonsReg",
@@ -38,13 +43,11 @@ class RowBluetoothDevices extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: padding.w),
             child: Text(
-              isConnected ? "Connected" : "Connect",
+              "Connect",
               style: TextStyle(
-                  fontSize: isConnected ? 14.sp : 12.sp,
+                  fontSize: 12.sp,
                   fontFamily: "MonsReg",
-                  color: isConnected
-                      ? const Color(0xff000000)
-                      : const Color(0xff00D0C3)),
+                  color: const Color(0xff00D0C3)),
             ),
           )
         ],
