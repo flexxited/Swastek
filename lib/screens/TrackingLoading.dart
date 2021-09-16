@@ -1,4 +1,4 @@
-import 'package:flexxited_swastek/screens/start_tracking_screen.dart';
+import 'package:flexxited_swastek/screens/start_tracking/start_tracking_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
