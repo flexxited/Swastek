@@ -7,10 +7,11 @@ import '../../../../domain/core/value_objects.dart';
 import '../../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
-  RxString email = "testuser1@swastek.com".obs;
-  RxString password = "12345678".obs;
+  RxString email = "".obs;
+  RxString password = "".obs;
 
   RxBool isLoading = false.obs;
+  RxBool isLoginPage = true.obs;
 
   final IAuth _iAuth;
 
@@ -18,6 +19,8 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {}
+
+  void signUp() {}
 
   void login() {
     final EmailAddress e = EmailAddress(email.value);
