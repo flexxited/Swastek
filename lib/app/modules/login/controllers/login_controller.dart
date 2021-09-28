@@ -7,11 +7,10 @@ import '../../../../domain/core/value_objects.dart';
 import '../../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
-  RxString email = "".obs;
-  RxString password = "".obs;
+  RxString email = "testuser1@swastek.com".obs;
+  RxString password = "12345678".obs;
 
   RxBool isLoading = false.obs;
-  RxBool isLoginPage = true.obs;
 
   final IAuth _iAuth;
 
@@ -19,8 +18,6 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {}
-
-  void signUp() {}
 
   void login() {
     final EmailAddress e = EmailAddress(email.value);
@@ -61,7 +58,7 @@ class LoginController extends GetxController {
             }, (r) async {
               debugPrint("result came without error");
 
-              final user = await _iAuth.getSignedInPerson();
+              final user = await _iAuth.getWebSignedInPerson();
               return user.fold(
                 () {
                   // person.value = null;

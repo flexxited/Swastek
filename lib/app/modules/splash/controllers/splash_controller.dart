@@ -19,17 +19,16 @@ class SplashController extends GetxController {
 
   @override
   void onClose() {}
-  void authCheckRequested() async {
-    var user = await _auth.getSignedInAdmin();
-    user.fold(
-      () {
-        // person.value = null;
-        Get.offAllNamed(Routes.ONBOARDING);
-      },
-      (a) {
-        // person.value = a;
-        Get.offAllNamed(Routes.HOME);
-      },
-    );
+  void authCheckRequested() {
+    _auth.getAppSignedInPerson().listen((event) async {
+      (await event).fold(
+        () {
+          Get.offAllNamed(Routes.ONBOARDING);
+        },
+        (a) {
+          Get.offAllNamed(Routes.HOME);
+        },
+      );
+    });
   }
 }

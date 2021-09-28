@@ -3,10 +3,11 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../domain/auth/i_auth_repo.dart';
 import '../../domain/auth/person.dart';
-import '../../domain/auth/user_role.dart';
+// import '../../domain/auth/user_role.dart';
 import '../../domain/core/auth_failures.dart';
 import '../../domain/core/value_failures.dart';
 import '../../domain/core/value_objects.dart';
@@ -17,12 +18,10 @@ class FBAuthRepo extends GetxService implements IAuth {
   final FirebaseAuth _auth;
   final FirebaseFirestore _store;
 
-  Rx<User?>? user;
-
   FBAuthRepo(this._auth, this._store);
 
   @override
-  Future<Option<Person>> getSignedInPerson() async {
+  Future<Option<Person>> getWebSignedInPerson() async {
     try {
       await Future.delayed(const Duration(seconds: 2));
 
@@ -64,31 +63,31 @@ class FBAuthRepo extends GetxService implements IAuth {
     );
   }
 
-  @override
-  Future<Either<AuthFailure, Unit>> loginOnlySuperAdminByEmailAndPassword(
-      {required EmailAddress email, required Password password}) async {
-    final user = await _signInWithEmailAndPasswordANdGetUser(
-        email: email, password: password);
+  // @override
+  // Future<Either<AuthFailure, Unit>> loginOnlySuperAdminByEmailAndPassword(
+  //     {required EmailAddress email, required Password password}) async {
+  //   final user = await _signInWithEmailAndPasswordANdGetUser(
+  //       email: email, password: password);
 
-    return user.fold(
-      (l) {
-        return Left(l);
-      },
-      (r) async {
-        final personDtoFromFbUser = await _personDtoFromFbUser(r);
-        debugPrint(
-            "personDtoFromFbUser ::${personDtoFromFbUser.role}::${UserRole.superAdmin().toValueString()}");
-        if (personDtoFromFbUser.role ==
-                const UserRole.admin().toValueString() ||
-            personDtoFromFbUser.role ==
-                const UserRole.superAdmin().toValueString()) {
-          return const Right(unit);
-        } else {
-          return const Left(AuthFailure.notAnAdmin());
-        }
-      },
-    );
-  }
+  //   return user.fold(
+  //     (l) {
+  //       return Left(l);
+  //     },
+  //     (r) async {
+  //       final personDtoFromFbUser = await _personDtoFromFbUser(r);
+  //       debugPrint(
+  //           "personDtoFromFbUser ::${personDtoFromFbUser.role}::${const UserRole.superAdmin().toValueString()}");
+  //       if (personDtoFromFbUser.role ==
+  //               const UserRole.admin().toValueString() ||
+  //           personDtoFromFbUser.role ==
+  //               const UserRole.superAdmin().toValueString()) {
+  //         return const Right(unit);
+  //       } else {
+  //         return const Left(AuthFailure.notAnAdmin());
+  //       }
+  //     },
+  //   );
+  // }
 
   Future<PersonDto> _personDtoFromFbUser(User user) async {
     final idToken = await user.getIdTokenResult();
@@ -144,16 +143,39 @@ class FBAuthRepo extends GetxService implements IAuth {
     }
   }
 
-  @override
-  Future<Option<Person>> getSignedInAdmin() async {
-    final admin = await getSignedInPerson();
+  // @override
+  // Future<Option<Person>> getSignedInAdmin() async {
+  //   final admin = await getWebSignedInPerson();
 
-    return admin.fold(
-      () => none(),
-      (a) => a.role == const UserRole.admin() ||
-              a.role == const UserRole.superAdmin()
-          ? some(a)
-          : none(),
-    );
+  //   return admin.fold(
+  //     () => none(),
+  //     (a) => a.role == const UserRole.admin() ||
+  //             a.role == const UserRole.superAdmin()
+  //         ? some(a)
+  //         : none(),
+  //   );
+  // }
+
+  @override
+  Stream<Future<Option<Person>>> getAppSignedInPerson() async* {
+    try {
+      yield* _auth.authStateChanges().map((user) async {
+        if (user == null) {
+          return Future.value(none<Person>());
+        } else {
+          final idToken = await user.getIdTokenResult();
+          final claims = idToken.claims ?? <dynamic, dynamic>{};
+          return some<Person>(user.toDomain(claims));
+        }
+      }).onErrorReturnWith((e) async {
+        debugPrint("ERR:$e");
+        // await _crashlytics.recordError(e, s);
+        return Future.value(none());
+      });
+    } catch (e) {
+      debugPrint("ERR:getSignedInUser:#################### $e");
+      // await _crashlytics.recordError(e, s);
+      yield Future.value(none());
+    }
   }
 }

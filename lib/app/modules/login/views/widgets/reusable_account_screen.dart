@@ -10,10 +10,6 @@ class ReusableAccountPage extends StatelessWidget {
   final String secondButtonText;
   final String firstButtonText;
   final int next;
-  final Function(String) onEmailChange;
-  final Function(String) onPasswordChange;
-  final void Function() onFirstButtonPressed;
-  final void Function() onSecondButtonPressed;
 
   const ReusableAccountPage(
       {required this.isSuffix,
@@ -21,11 +17,7 @@ class ReusableAccountPage extends StatelessWidget {
       required this.secondButtonText,
       required this.firstButtonText,
       required this.textFieldLabel,
-      required this.next,
-      required this.onEmailChange,
-      required this.onPasswordChange,
-      required this.onFirstButtonPressed,
-      required this.onSecondButtonPressed});
+      required this.next});
 
   @override
   Widget build(BuildContext context) {
@@ -73,15 +65,18 @@ class ReusableAccountPage extends StatelessWidget {
                   padding: EdgeInsets.only(top: 36.h, left: 20.w),
                   child: ReusableUnderlineLabelTextField(
                     label: "Username/ Email",
-                    onChange: onEmailChange,
+                    onChange: (s) =>
+                        Get.find<LoginController>().email.value = s,
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20.h, left: 20.w),
                   child: ReusableUnderlineLabelTextField(
-                      label: textFieldLabel,
-                      isSuffix: isSuffix,
-                      onChange: onPasswordChange),
+                    label: textFieldLabel,
+                    isSuffix: isSuffix,
+                    onChange: (s) =>
+                        Get.find<LoginController>().password.value = s,
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 286.w, top: 5.h),
@@ -125,7 +120,9 @@ class ReusableAccountPage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 51.h, left: 20.w),
                   child: GestureDetector(
-                    onTap: onFirstButtonPressed,
+                    onTap: () {
+                      Get.find<LoginController>().login();
+                    },
                     child: Container(
                       width: 288.w,
                       height: 52.h,
@@ -149,7 +146,9 @@ class ReusableAccountPage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 10.h, left: 20.w),
                   child: GestureDetector(
-                    onTap: onSecondButtonPressed,
+                    onTap: () {
+                      // Get.to(account_screens[next]);
+                    },
                     child: Container(
                       width: 288.w,
                       height: 52.h,
@@ -194,7 +193,6 @@ class ReusableUnderlineLabelTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged: onChange,
       style: TextStyle(
           color: const Color(0xffBCBCBC),
           fontSize: 16.sp,

@@ -1,97 +1,98 @@
+import 'package:flexxited_swastek/app/modules/home/controllers/device_controller.dart';
 import 'package:flexxited_swastek/domain/bluetooth/bluetooth_repo.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flexxited_swastek/domain/core/swastek_failures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  final pageController = PageController();
+  final DeviceController deviceController;
   final IBlueRepo iBlueRepo;
 
-  final RxBool isBluetoothOn = false.obs;
-  final RxBool isScanning = false.obs;
-  final RxList<BluetoothDevice> devicesFound = <BluetoothDevice>[].obs;
+  final RxString wellcomePageMsg = "".obs;
 
-  HomeController(this.iBlueRepo);
+  HomeController(this.iBlueRepo, this.deviceController);
 
   @override
   void onInit() {
     super.onInit();
-    checkBTStatus();
-    scanDevice();
-    getIsScanning();
-  }
 
-  @override
-  void onClose() {}
-
-  Future<void> checkBTStatus() async {
-    iBlueRepo.getBTState().listen((event) {
-      event.fold(
-        (l) {
-          Get.showSnackbar(GetBar(
-            title: "Error!",
-            message: "Unable to find bluetooth on/off status",
-            duration: const Duration(seconds: 3),
-          ));
-          isBluetoothOn.value = false;
-        },
-        (r) {
-          switch (r) {
-            case BluetoothState.on:
-              isBluetoothOn.value = true;
-              break;
-            case BluetoothState.off:
-            case BluetoothState.turningOn:
-            case BluetoothState.turningOff:
-            case BluetoothState.unauthorized:
-            case BluetoothState.unavailable:
-            case BluetoothState.unknown:
-              isBluetoothOn.value = false;
-              break;
-            default:
-              isBluetoothOn.value = false;
-              break;
-          }
-        },
-      );
-    });
-  }
-
-  void scanDevice() {
-    isBluetoothOn.listen((b) {
-      if (b) {
-        debugPrint("start scaning 1");
-        iBlueRepo.scanForDevice().listen((event) {
-          event.fold(
-            (l) {
-              debugPrint("Exception while scanning $l");
-            },
-            (r) {
-              if (!devicesFound.value.contains(r)) {
-                devicesFound.add(r);
-              }
-            },
-          );
-        });
-        debugPrint("start scaning 2");
-      } else {
-        iBlueRepo.stopScan();
-        devicesFound.value = [];
+    deviceController.isBluetoothOn.listen((b) {
+      if (!b) {
+        pageController.animateToPage(1,
+            duration: const Duration(milliseconds: 400), curve: Curves.easeIn);
       }
     });
+
+    deviceController.isDeviceConnected.listen((e) {
+      if (e == BluetoothDeviceState.connected) {
+        pageController.animateToPage(2,
+            duration: const Duration(milliseconds: 400), curve: Curves.easeIn);
+      }
+    });
+
+    // hookBlueToothStateToHomePageNavigation();
   }
 
-  void getIsScanning() {
-    debugPrint("********************** is scanning");
-    iBlueRepo.isScanning().listen((event) {
-      event.fold(
-        (l) {
-          debugPrint("********************** is scanning Error is controller");
-        },
-        (r) {
-          debugPrint("********************** is scanning result $r");
-          isScanning.value = r;
-        },
-      );
-    });
-  }
+  // Future<void> hookBlueToothStateToHomePageNavigation() async {
+  //   //check if device support bluetooth
+  //   //check if device bluetooth is on or not
+  //   //if on
+
+  //   wellcomePageMsg.value = "Searching for bluetooth service...";
+  //   await Future.delayed(const Duration(seconds: 2));
+  //   final result = await iBlueRepo.checkIfDeviceSupportBT();
+
+  //   result.fold(
+  //     (l) {
+  //       wellcomePageMsg.value = l.failureMessage();
+  //       // "Something went wrong in search of bluetooth service...";
+  //     },
+  //     (r) async {
+  //       if (!r) {
+  //         wellcomePageMsg.value = "Your mobile does not support bluetooth!";
+  //       } else {
+  //         wellcomePageMsg.value = "Found a bluetooth service...";
+  //         await Future.delayed(const Duration(seconds: 3));
+  //         wellcomePageMsg.value = "Checking if device is on/off";
+  //         final res = await iBlueRepo.isBluetoothOn();
+  //         res.fold(
+  //           (l) {
+  //             wellcomePageMsg.value = l.failureMessage();
+  //           },
+  //           (r) async {
+  //             if (!r) {
+  //               wellcomePageMsg.value = "Bluetooth is switched off!";
+  //               await Future.delayed(const Duration(seconds: 3));
+  //               pageController.animateToPage(1,
+  //                   duration: const Duration(milliseconds: 400),
+  //                   curve: Curves.easeIn);
+  //             } else {
+  //               wellcomePageMsg.value = "Bluetooth is switched on!";
+  //               //check if device is connected or not
+  //               //if device is connected than take him to
+  //               final connectedDevice = await iBlueRepo.getConnectedDevices();
+  //               connectedDevice.fold(
+  //                 (l) {
+  //                   wellcomePageMsg.value = l.failureMessage();
+  //                   pageController.animateToPage(1,
+  //                       duration: const Duration(milliseconds: 400),
+  //                       curve: Curves.easeIn);
+  //                   iBlueRepo.scanForDevice();
+  //                 },
+  //                 (r) {
+  //                   pageController.animateToPage(2,
+  //                       duration: const Duration(milliseconds: 400),
+  //                       curve: Curves.easeIn);
+  //                 },
+  //               );
+  //             }
+  //           },
+  //         );
+  //       }
+  //     },
+  //   );
+  // }
+
 }

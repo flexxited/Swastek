@@ -10,12 +10,13 @@ abstract class IAuth {
     required Password password,
   });
 
-  Future<Option<Person>> getSignedInPerson();
+  Future<Option<Person>> getWebSignedInPerson();
+  Stream<Future<Option<Person>>> getAppSignedInPerson();
 
-  Future<Option<Person>> getSignedInAdmin();
+  // Future<Option<Person>> getSignedInAdmin();
 
-  Future<Either<AuthFailure, Unit>> loginOnlySuperAdminByEmailAndPassword({
-    required EmailAddress email,
-    required Password password,
-  });
+  // Future<Either<AuthFailure, Unit>> loginOnlySuperAdminByEmailAndPassword({
+  //   required EmailAddress email,
+  //   required Password password,
+  // });
 }
