@@ -20,10 +20,10 @@ class MyBoard extends GetView<MyBoardController> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: Container(
+          leading: Image.asset(
+            "assets/images/logo.png",
             width: 47.w,
             height: 37.h,
-            color: Theme.of(context).accentColor,
           ),
           actions: [
             SizedBox(
@@ -45,7 +45,7 @@ class MyBoard extends GetView<MyBoardController> {
                       color: Theme.of(context).accentColor,
                     ),
                     Icon(
-                      Icons.person,
+                      Icons.logout,
                       size: 27.sp,
                       color: Theme.of(context).accentColor,
                     )

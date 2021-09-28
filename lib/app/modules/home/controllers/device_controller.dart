@@ -18,7 +18,7 @@ class DeviceController extends GetxController {
   // final RxBool startTackingListView = false.obs;
   final RxList<BluetoothDevice> devicesFound = <BluetoothDevice>[].obs;
   final Rx<DeviceDataPacket> deviceData =
-      const DeviceDataPacket.invalidDataPacket(msg: "Just initialised").obs;
+      DeviceDataPacket.testData(isDev: true).obs;
 
   StreamSubscription<List<int>>? characteresticSubscription;
 

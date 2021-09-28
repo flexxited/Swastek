@@ -73,13 +73,13 @@ class HeartRateListTile extends StatelessWidget {
               child: SizedBox(
                 height: 24.h,
                 child: Obx(
-                  () => RowHealthData(
+                  () => SingleRowHealthData(
                     value: controller.deviceData.value.map(
                       (value) => value.heartRate.vital.toString(),
                       invalidDataPacket: (_) => "Invalid Data",
                     ),
                     type: "Vital",
-                    padding: 230,
+                    //   padding: 230,
                     units: "beats/minute",
                   ),
                 ),
