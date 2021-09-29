@@ -2,6 +2,7 @@
 
 import 'package:flexxited_swastek/app/modules/home/controllers/home_controller.dart';
 import 'package:flexxited_swastek/app/modules/home/controllers/my_board_controller.dart';
+import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/battery_custom_clipper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,13 +28,30 @@ class MyBoard extends GetView<MyBoardController> {
           ),
           actions: [
             SizedBox(
-              width: 102.w,
+              width: 135.w,
               height: 27.h,
               child: Padding(
                 padding: EdgeInsets.only(right: 15.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Stack(
+                      children: [
+                        Icon(
+                          Icons.battery_full_outlined,
+                          size: 27.sp,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        ClipPath(
+                          clipper: BatteryClipper(),
+                          child: Icon(
+                            Icons.battery_full_outlined,
+                            size: 27.sp,
+                            color: const Color(0xff00D0C3),
+                          ),
+                        ),
+                      ],
+                    ),
                     Icon(
                       Icons.rss_feed,
                       size: 27.sp,
