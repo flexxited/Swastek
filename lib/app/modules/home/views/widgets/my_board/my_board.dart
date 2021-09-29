@@ -40,7 +40,7 @@ class MyBoard extends GetView<MyBoardController> {
                         Icon(
                           Icons.battery_full_outlined,
                           size: 27.sp,
-                          color: Theme.of(context).primaryColor,
+                          color: const Color(0xff00D0C3),
                         ),
                         ClipPath(
                           clipper: BatteryClipper(),
