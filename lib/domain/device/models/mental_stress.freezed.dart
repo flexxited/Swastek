@@ -158,7 +158,7 @@ class __$MentalStressCopyWithImpl<$Res> extends _$MentalStressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MentalStress implements _MentalStress {
+class _$_MentalStress with DiagnosticableTreeMixin implements _MentalStress {
   const _$_MentalStress({required this.bp, required this.hr, required this.rr});
 
   @override
@@ -169,8 +169,18 @@ class _$_MentalStress implements _MentalStress {
   final RespiratoryRate rr;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'MentalStress(bp: $bp, hr: $hr, rr: $rr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'MentalStress'))
+      ..add(DiagnosticsProperty('bp', bp))
+      ..add(DiagnosticsProperty('hr', hr))
+      ..add(DiagnosticsProperty('rr', rr));
   }
 
   @override

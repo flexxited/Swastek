@@ -87,8 +87,8 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
             heartRate: HeartRate(
               variability: 34,
               viriabilityLevel: 34.getVariabilityLevels(),
-              vital: 45,
-              vitalLevel: 45.getVitalLevels(),
+              vital: 100,
+              vitalLevel: 100.getVitalLevels(),
             ),
             spo2: const OxygenSaturation(spO2: 94),
             respiratoryRate: RespiratoryRate(
@@ -96,8 +96,8 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
               respiratoryLevel: 60.getRespiratoryLevels(),
             ),
             bloodPressure: BloodPressure(
-              systolic: 68,
-              systolicLevel: 68.getSystolicLevels(),
+              systolic: 121,
+              systolicLevel: 121.getSystolicLevels(),
               diastolic: 78,
             ),
             coreBodyTemperature: const CoreBodyTemperature(cbt: 36.5),
@@ -127,6 +127,7 @@ extension DeviceDataX on DeviceDataPacket {
       DeviceDataPacketItem.fallDetection(),
       DeviceDataPacketItem.heatStress(),
       DeviceDataPacketItem.posture(),
+      DeviceDataPacketItem.mentalStress()
     ];
   }
 }
@@ -143,4 +144,5 @@ abstract class DeviceDataPacketItem with _$DeviceDataPacketItem {
   const factory DeviceDataPacketItem.fallDetection() = _FallDetection;
   const factory DeviceDataPacketItem.heatStress() = _HeatStress;
   const factory DeviceDataPacketItem.posture() = _Posture;
+  const factory DeviceDataPacketItem.mentalStress() = _mentalStress;
 }

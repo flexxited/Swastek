@@ -1,5 +1,6 @@
 // import 'package:flexxited_swastek/controllers/tracking_controller.dart';
 // import 'package:flexxited_swastek/screens/view_vital/view_vital.dart';
+import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/horizontal_view/cards/mental_stress_horizontal_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ import 'cards/posture_card_horizontal_list_tile.dart';
 import 'cards/respiratory_rate_card_horizontal_list_tile.dart';
 import 'cards/spo2_card_horizontal_list_tile.dart';
 import 'cards/step_count_card_horizontal_list_tile.dart';
+import 'package:flexxited_swastek/domain/device/models/mental_stress.dart';
 
 class HorizontalView extends StatelessWidget {
   // final TrackingController trackController = Get.find();
@@ -62,6 +64,13 @@ class HorizontalView extends StatelessWidget {
                               heatStress: value.heatStres),
                           posture: (_) => PostureDetectionHorizontalListTile(
                               posture: value.posture),
+                          mentalStress: (_) => MentalStressHorizontalListTile(
+                            mentalStress: MentalStress(
+                              bp: value.bloodPressure,
+                              hr: value.heartRate,
+                              rr: value.respiratoryRate,
+                            ),
+                          ),
                         );
                       },
                       invalidDataPacket: (_) {
@@ -76,6 +85,7 @@ class HorizontalView extends StatelessWidget {
                             fallDetection: (_) => "Fall detection",
                             heatStress: (_) => "Heat stress",
                             posture: (_) => "Posture",
+                            mentalStress: (_) => "Mental Stress",
                           ),
                         );
                       },
@@ -139,7 +149,6 @@ class HorizontalView extends StatelessWidget {
     );
   }
 }
-
 
 class BottomNoBorderButton extends StatelessWidget {
   final String text;

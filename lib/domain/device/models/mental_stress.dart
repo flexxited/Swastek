@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'blood_pressure.dart';
@@ -21,20 +22,25 @@ extension MentalStressX on MentalStress {
     if (bp.systolicLevel == EnLevels.normal(value: bp.systolic) &&
         hr.vitalLevel == EnLevels.normal(value: hr.vital) &&
         rr.respiratoryLevel == EnLevels.normal(value: rr.rr)) {
+      debugPrint("1");
       return const EnLevels.normal(value: -1);
     } else if (bp.systolicLevel == EnLevels.normal(value: bp.systolic) &&
         hr.vitalLevel == EnLevels.high(value: hr.vital) &&
         rr.respiratoryLevel == EnLevels.normal(value: rr.rr)) {
+      debugPrint("2");
       return const EnLevels.low(value: -1);
     } else if (bp.systolicLevel == EnLevels.high(value: bp.systolic) &&
         hr.vitalLevel == EnLevels.high(value: hr.vital) &&
         rr.respiratoryLevel == EnLevels.normal(value: rr.rr)) {
+      debugPrint("3");
       return const EnLevels.normalHigh(value: -1);
     } else if (bp.systolicLevel == EnLevels.high(value: bp.systolic) &&
         hr.vitalLevel == EnLevels.high(value: hr.vital) &&
         rr.respiratoryLevel == EnLevels.high(value: rr.rr)) {
+      debugPrint("4");
       return const EnLevels.high(value: -1);
     } else {
+      debugPrint("5");
       return const EnLevels.undetermined();
     }
   }

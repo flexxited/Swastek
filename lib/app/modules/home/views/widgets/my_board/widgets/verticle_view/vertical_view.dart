@@ -3,10 +3,12 @@ import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widget
 import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/verticle_view/cards/core_body_temp_card_vertical_list_tile.dart';
 import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/verticle_view/cards/fall_detection_card_vertical_list_tile.dart';
 import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/verticle_view/cards/heat_stress_card_vertical_list_tile.dart';
+import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/verticle_view/cards/mental_stress_card_vertical_list_tile.dart';
 import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/verticle_view/cards/posture_card_vertical_list_tile.dart';
 import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/verticle_view/cards/respiratory_rate_card_vertical_list_tile.dart';
 import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/verticle_view/cards/spo2_card_vertical_list_tile.dart';
 import 'package:flexxited_swastek/app/modules/home/views/widgets/my_board/widgets/verticle_view/cards/step_count_card_vertical_list_tile.dart';
+import 'package:flexxited_swastek/domain/device/models/mental_stress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -52,6 +54,12 @@ class VerticalView extends StatelessWidget {
                           heatStress: value.heatStres),
                       posture: (_) => PostureDetectionVerticalListTile(
                           posture: value.posture),
+                      mentalStress: (_) => MentalStressVerticalListTile(
+                        mentalStress: MentalStress(
+                            bp: value.bloodPressure,
+                            hr: value.heartRate,
+                            rr: value.respiratoryRate),
+                      ),
                     ),
                 invalidDataPacket: (_) => Text("Invalid Data"));
           },

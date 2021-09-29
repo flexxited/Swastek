@@ -697,6 +697,10 @@ class _$DeviceDataPacketItemTearOff {
   _Posture posture() {
     return const _Posture();
   }
+
+  _mentalStress mentalStress() {
+    return const _mentalStress();
+  }
 }
 
 /// @nodoc
@@ -715,6 +719,7 @@ mixin _$DeviceDataPacketItem {
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -728,6 +733,7 @@ mixin _$DeviceDataPacketItem {
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -742,6 +748,7 @@ mixin _$DeviceDataPacketItem {
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -755,6 +762,7 @@ mixin _$DeviceDataPacketItem {
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -832,6 +840,7 @@ class _$_HeartRate with DiagnosticableTreeMixin implements _HeartRate {
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return heartRate();
   }
@@ -848,6 +857,7 @@ class _$_HeartRate with DiagnosticableTreeMixin implements _HeartRate {
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (heartRate != null) {
@@ -868,6 +878,7 @@ class _$_HeartRate with DiagnosticableTreeMixin implements _HeartRate {
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return heartRate(this);
   }
@@ -884,6 +895,7 @@ class _$_HeartRate with DiagnosticableTreeMixin implements _HeartRate {
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (heartRate != null) {
@@ -956,6 +968,7 @@ class _$_OxygenSaturation
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return oxygenSaturation();
   }
@@ -972,6 +985,7 @@ class _$_OxygenSaturation
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (oxygenSaturation != null) {
@@ -992,6 +1006,7 @@ class _$_OxygenSaturation
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return oxygenSaturation(this);
   }
@@ -1008,6 +1023,7 @@ class _$_OxygenSaturation
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (oxygenSaturation != null) {
@@ -1080,6 +1096,7 @@ class _$_RespiratoryRate
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return respiratoryRate();
   }
@@ -1096,6 +1113,7 @@ class _$_RespiratoryRate
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (respiratoryRate != null) {
@@ -1116,6 +1134,7 @@ class _$_RespiratoryRate
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return respiratoryRate(this);
   }
@@ -1132,6 +1151,7 @@ class _$_RespiratoryRate
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (respiratoryRate != null) {
@@ -1201,6 +1221,7 @@ class _$_BloodPressure with DiagnosticableTreeMixin implements _BloodPressure {
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return bloodPressure();
   }
@@ -1217,6 +1238,7 @@ class _$_BloodPressure with DiagnosticableTreeMixin implements _BloodPressure {
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (bloodPressure != null) {
@@ -1237,6 +1259,7 @@ class _$_BloodPressure with DiagnosticableTreeMixin implements _BloodPressure {
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return bloodPressure(this);
   }
@@ -1253,6 +1276,7 @@ class _$_BloodPressure with DiagnosticableTreeMixin implements _BloodPressure {
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (bloodPressure != null) {
@@ -1325,6 +1349,7 @@ class _$_CoreBodyTemperature
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return coreBodyTemperature();
   }
@@ -1341,6 +1366,7 @@ class _$_CoreBodyTemperature
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (coreBodyTemperature != null) {
@@ -1361,6 +1387,7 @@ class _$_CoreBodyTemperature
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return coreBodyTemperature(this);
   }
@@ -1377,6 +1404,7 @@ class _$_CoreBodyTemperature
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (coreBodyTemperature != null) {
@@ -1445,6 +1473,7 @@ class _$_StepCount with DiagnosticableTreeMixin implements _StepCount {
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return stepCount();
   }
@@ -1461,6 +1490,7 @@ class _$_StepCount with DiagnosticableTreeMixin implements _StepCount {
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (stepCount != null) {
@@ -1481,6 +1511,7 @@ class _$_StepCount with DiagnosticableTreeMixin implements _StepCount {
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return stepCount(this);
   }
@@ -1497,6 +1528,7 @@ class _$_StepCount with DiagnosticableTreeMixin implements _StepCount {
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (stepCount != null) {
@@ -1566,6 +1598,7 @@ class _$_FallDetection with DiagnosticableTreeMixin implements _FallDetection {
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return fallDetection();
   }
@@ -1582,6 +1615,7 @@ class _$_FallDetection with DiagnosticableTreeMixin implements _FallDetection {
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (fallDetection != null) {
@@ -1602,6 +1636,7 @@ class _$_FallDetection with DiagnosticableTreeMixin implements _FallDetection {
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return fallDetection(this);
   }
@@ -1618,6 +1653,7 @@ class _$_FallDetection with DiagnosticableTreeMixin implements _FallDetection {
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (fallDetection != null) {
@@ -1687,6 +1723,7 @@ class _$_HeatStress with DiagnosticableTreeMixin implements _HeatStress {
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return heatStress();
   }
@@ -1703,6 +1740,7 @@ class _$_HeatStress with DiagnosticableTreeMixin implements _HeatStress {
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (heatStress != null) {
@@ -1723,6 +1761,7 @@ class _$_HeatStress with DiagnosticableTreeMixin implements _HeatStress {
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return heatStress(this);
   }
@@ -1739,6 +1778,7 @@ class _$_HeatStress with DiagnosticableTreeMixin implements _HeatStress {
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (heatStress != null) {
@@ -1806,6 +1846,7 @@ class _$_Posture with DiagnosticableTreeMixin implements _Posture {
     required TResult Function() fallDetection,
     required TResult Function() heatStress,
     required TResult Function() posture,
+    required TResult Function() mentalStress,
   }) {
     return posture();
   }
@@ -1822,6 +1863,7 @@ class _$_Posture with DiagnosticableTreeMixin implements _Posture {
     TResult Function()? fallDetection,
     TResult Function()? heatStress,
     TResult Function()? posture,
+    TResult Function()? mentalStress,
     required TResult orElse(),
   }) {
     if (posture != null) {
@@ -1842,6 +1884,7 @@ class _$_Posture with DiagnosticableTreeMixin implements _Posture {
     required TResult Function(_FallDetection value) fallDetection,
     required TResult Function(_HeatStress value) heatStress,
     required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
   }) {
     return posture(this);
   }
@@ -1858,6 +1901,7 @@ class _$_Posture with DiagnosticableTreeMixin implements _Posture {
     TResult Function(_FallDetection value)? fallDetection,
     TResult Function(_HeatStress value)? heatStress,
     TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
     required TResult orElse(),
   }) {
     if (posture != null) {
@@ -1869,4 +1913,129 @@ class _$_Posture with DiagnosticableTreeMixin implements _Posture {
 
 abstract class _Posture implements DeviceDataPacketItem {
   const factory _Posture() = _$_Posture;
+}
+
+/// @nodoc
+abstract class _$mentalStressCopyWith<$Res> {
+  factory _$mentalStressCopyWith(
+          _mentalStress value, $Res Function(_mentalStress) then) =
+      __$mentalStressCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$mentalStressCopyWithImpl<$Res>
+    extends _$DeviceDataPacketItemCopyWithImpl<$Res>
+    implements _$mentalStressCopyWith<$Res> {
+  __$mentalStressCopyWithImpl(
+      _mentalStress _value, $Res Function(_mentalStress) _then)
+      : super(_value, (v) => _then(v as _mentalStress));
+
+  @override
+  _mentalStress get _value => super._value as _mentalStress;
+}
+
+/// @nodoc
+
+class _$_mentalStress with DiagnosticableTreeMixin implements _mentalStress {
+  const _$_mentalStress();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DeviceDataPacketItem.mentalStress()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DeviceDataPacketItem.mentalStress'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _mentalStress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() heartRate,
+    required TResult Function() oxygenSaturation,
+    required TResult Function() respiratoryRate,
+    required TResult Function() bloodPressure,
+    required TResult Function() coreBodyTemperature,
+    required TResult Function() stepCount,
+    required TResult Function() fallDetection,
+    required TResult Function() heatStress,
+    required TResult Function() posture,
+    required TResult Function() mentalStress,
+  }) {
+    return mentalStress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? heartRate,
+    TResult Function()? oxygenSaturation,
+    TResult Function()? respiratoryRate,
+    TResult Function()? bloodPressure,
+    TResult Function()? coreBodyTemperature,
+    TResult Function()? stepCount,
+    TResult Function()? fallDetection,
+    TResult Function()? heatStress,
+    TResult Function()? posture,
+    TResult Function()? mentalStress,
+    required TResult orElse(),
+  }) {
+    if (mentalStress != null) {
+      return mentalStress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_HeartRate value) heartRate,
+    required TResult Function(_OxygenSaturation value) oxygenSaturation,
+    required TResult Function(_RespiratoryRate value) respiratoryRate,
+    required TResult Function(_BloodPressure value) bloodPressure,
+    required TResult Function(_CoreBodyTemperature value) coreBodyTemperature,
+    required TResult Function(_StepCount value) stepCount,
+    required TResult Function(_FallDetection value) fallDetection,
+    required TResult Function(_HeatStress value) heatStress,
+    required TResult Function(_Posture value) posture,
+    required TResult Function(_mentalStress value) mentalStress,
+  }) {
+    return mentalStress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_HeartRate value)? heartRate,
+    TResult Function(_OxygenSaturation value)? oxygenSaturation,
+    TResult Function(_RespiratoryRate value)? respiratoryRate,
+    TResult Function(_BloodPressure value)? bloodPressure,
+    TResult Function(_CoreBodyTemperature value)? coreBodyTemperature,
+    TResult Function(_StepCount value)? stepCount,
+    TResult Function(_FallDetection value)? fallDetection,
+    TResult Function(_HeatStress value)? heatStress,
+    TResult Function(_Posture value)? posture,
+    TResult Function(_mentalStress value)? mentalStress,
+    required TResult orElse(),
+  }) {
+    if (mentalStress != null) {
+      return mentalStress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _mentalStress implements DeviceDataPacketItem {
+  const factory _mentalStress() = _$_mentalStress;
 }
