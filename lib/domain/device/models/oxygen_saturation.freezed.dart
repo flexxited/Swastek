@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$OxygenSaturationTearOff {
   const _$OxygenSaturationTearOff();
 
-  _OxygenSaturation call({required int spO2}) {
+  _OxygenSaturation call({required int spO2, required EnLevels spO2Level}) {
     return _OxygenSaturation(
       spO2: spO2,
+      spO2Level: spO2Level,
     );
   }
 }
@@ -29,6 +30,7 @@ const $OxygenSaturation = _$OxygenSaturationTearOff();
 /// @nodoc
 mixin _$OxygenSaturation {
   int get spO2 => throw _privateConstructorUsedError;
+  EnLevels get spO2Level => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OxygenSaturationCopyWith<OxygenSaturation> get copyWith =>
@@ -40,7 +42,9 @@ abstract class $OxygenSaturationCopyWith<$Res> {
   factory $OxygenSaturationCopyWith(
           OxygenSaturation value, $Res Function(OxygenSaturation) then) =
       _$OxygenSaturationCopyWithImpl<$Res>;
-  $Res call({int spO2});
+  $Res call({int spO2, EnLevels spO2Level});
+
+  $EnLevelsCopyWith<$Res> get spO2Level;
 }
 
 /// @nodoc
@@ -55,13 +59,25 @@ class _$OxygenSaturationCopyWithImpl<$Res>
   @override
   $Res call({
     Object? spO2 = freezed,
+    Object? spO2Level = freezed,
   }) {
     return _then(_value.copyWith(
       spO2: spO2 == freezed
           ? _value.spO2
           : spO2 // ignore: cast_nullable_to_non_nullable
               as int,
+      spO2Level: spO2Level == freezed
+          ? _value.spO2Level
+          : spO2Level // ignore: cast_nullable_to_non_nullable
+              as EnLevels,
     ));
+  }
+
+  @override
+  $EnLevelsCopyWith<$Res> get spO2Level {
+    return $EnLevelsCopyWith<$Res>(_value.spO2Level, (value) {
+      return _then(_value.copyWith(spO2Level: value));
+    });
   }
 }
 
@@ -72,7 +88,10 @@ abstract class _$OxygenSaturationCopyWith<$Res>
           _OxygenSaturation value, $Res Function(_OxygenSaturation) then) =
       __$OxygenSaturationCopyWithImpl<$Res>;
   @override
-  $Res call({int spO2});
+  $Res call({int spO2, EnLevels spO2Level});
+
+  @override
+  $EnLevelsCopyWith<$Res> get spO2Level;
 }
 
 /// @nodoc
@@ -89,12 +108,17 @@ class __$OxygenSaturationCopyWithImpl<$Res>
   @override
   $Res call({
     Object? spO2 = freezed,
+    Object? spO2Level = freezed,
   }) {
     return _then(_OxygenSaturation(
       spO2: spO2 == freezed
           ? _value.spO2
           : spO2 // ignore: cast_nullable_to_non_nullable
               as int,
+      spO2Level: spO2Level == freezed
+          ? _value.spO2Level
+          : spO2Level // ignore: cast_nullable_to_non_nullable
+              as EnLevels,
     ));
   }
 }
@@ -102,14 +126,16 @@ class __$OxygenSaturationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OxygenSaturation implements _OxygenSaturation {
-  const _$_OxygenSaturation({required this.spO2});
+  const _$_OxygenSaturation({required this.spO2, required this.spO2Level});
 
   @override
   final int spO2;
+  @override
+  final EnLevels spO2Level;
 
   @override
   String toString() {
-    return 'OxygenSaturation(spO2: $spO2)';
+    return 'OxygenSaturation(spO2: $spO2, spO2Level: $spO2Level)';
   }
 
   @override
@@ -117,12 +143,17 @@ class _$_OxygenSaturation implements _OxygenSaturation {
     return identical(this, other) ||
         (other is _OxygenSaturation &&
             (identical(other.spO2, spO2) ||
-                const DeepCollectionEquality().equals(other.spO2, spO2)));
+                const DeepCollectionEquality().equals(other.spO2, spO2)) &&
+            (identical(other.spO2Level, spO2Level) ||
+                const DeepCollectionEquality()
+                    .equals(other.spO2Level, spO2Level)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(spO2);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(spO2) ^
+      const DeepCollectionEquality().hash(spO2Level);
 
   @JsonKey(ignore: true)
   @override
@@ -131,10 +162,13 @@ class _$_OxygenSaturation implements _OxygenSaturation {
 }
 
 abstract class _OxygenSaturation implements OxygenSaturation {
-  const factory _OxygenSaturation({required int spO2}) = _$_OxygenSaturation;
+  const factory _OxygenSaturation(
+      {required int spO2, required EnLevels spO2Level}) = _$_OxygenSaturation;
 
   @override
   int get spO2 => throw _privateConstructorUsedError;
+  @override
+  EnLevels get spO2Level => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$OxygenSaturationCopyWith<_OxygenSaturation> get copyWith =>

@@ -84,6 +84,8 @@ class StepCountVerticalListTile extends StatelessWidget {
                   type: "Vital",
                   //   padding: 230,
                   units: "degree Celcius",
+                  level: "",
+                  color: Colors.black,
                 ),
               ),
             ),

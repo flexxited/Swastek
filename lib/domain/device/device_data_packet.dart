@@ -53,7 +53,8 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
             viriabilityLevel: deviceDataPacket[6].getVariabilityLevels(),
           ),
           spo2: OxygenSaturation(
-              spO2: deviceDataPacket[7].getValidOxygenSaturation()),
+              spO2: deviceDataPacket[7].getValidOxygenSaturation(),
+          spO2Level:deviceDataPacket[7].getLevels()),
           respiratoryRate: RespiratoryRate(
               rr: deviceDataPacket[8],
               respiratoryLevel: deviceDataPacket[8].getRespiratoryLevels()),
@@ -90,7 +91,7 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
               vital: 100,
               vitalLevel: 100.getVitalLevels(),
             ),
-            spo2: const OxygenSaturation(spO2: 94),
+            spo2: OxygenSaturation(spO2: 94, spO2Level: 94.getLevels()),
             respiratoryRate: RespiratoryRate(
               rr: 60,
               respiratoryLevel: 60.getRespiratoryLevels(),

@@ -73,14 +73,37 @@ class CBTVerticalListTile extends StatelessWidget {
               child: SizedBox(
                 height: 24.h,
                 child: SingleRowHealthData(
-                  value: cbt.map(
-                    (value) => value.cbt.toString(),
-                    empty: (_) => "0",
-                  ),
-                  type: "Vital",
-                  //   padding: 230,
-                  units: "degree Celcius",
-                ),
+                    value: cbt.map(
+                      (value) => value.cbt.toString(),
+                      empty: (_) => "0",
+                    ),
+                    type: "Vital",
+                    //   padding: 230,
+                    units: "degree Celcius",
+                    level: cbt.map(
+                      (value) => value.getLevels().map(
+                            low: (_) => "LOW",
+                            lowNormal: (_) => "LOW",
+                            normal: (_) => "NORMAL",
+                            normalHigh: (_) => "HIGH",
+                            high: (_) => "HIGH",
+                            undetermined: (_) => "UNDETERMINED",
+                          ),
+                      empty: (_) => "NO DATA",
+                    ),
+                    color: cbt.map(
+                      (value) => value.getLevels().map(
+                            low: (_) => Color(0xffFF0000),
+                            lowNormal: (_) => Color(0xffFF0000),
+                            normal: (_) => Color(
+                              0xff1CC216,
+                            ),
+                            normalHigh: (_) => Color(0xffFF0000),
+                            high: (_) => Color(0xffFF0000),
+                            undetermined: (_) => Colors.black,
+                          ),
+                      empty: (_) => Colors.black,
+                    )),
               ),
             ),
           ),

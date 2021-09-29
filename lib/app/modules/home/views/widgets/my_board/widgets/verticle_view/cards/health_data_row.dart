@@ -5,12 +5,15 @@ class SingleRowHealthData extends StatelessWidget {
   final String type;
   final String value;
   final String units;
+  final String level;
+  final Color color;
 
-  const SingleRowHealthData({
-    required this.value,
-    required this.type,
-    required this.units,
-  });
+  const SingleRowHealthData(
+      {required this.value,
+      required this.type,
+      required this.units,
+      required this.level,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,17 @@ class SingleRowHealthData extends StatelessWidget {
           ),
         ),
         Expanded(child: SizedBox()),
+        Text(
+          level,
+          style: TextStyle(
+              color: color,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w600,
+              fontFamily: "MonsReg"),
+        ),
+        SizedBox(
+          width: 5.w,
+        ),
         Text(
           value,
           style: TextStyle(
@@ -56,28 +70,44 @@ class DoubleRowHealthData extends StatelessWidget {
   final String type1;
   final String value1;
   final String units1;
+  final String level1;
+  final Color color1;
   final String type2;
   final String value2;
   final String units2;
+  final String level2;
+  final Color color2;
 
   const DoubleRowHealthData({
     required this.value1,
     required this.type1,
     required this.units1,
+    required this.level1,
+    required this.color1,
     required this.type2,
     required this.value2,
     required this.units2,
+    required this.level2,
+    required this.color2,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SingleRowHealthData(value: value1, type: type1, units: units1),
+        SingleRowHealthData(
+          value: value1,
+          type: type1,
+          units: units1,
+          level: level1,
+          color: color1,
+        ),
         SingleRowHealthData(
           value: value2,
           type: type2,
           units: units2,
+          level: level2,
+          color: color2,
         )
       ],
     );

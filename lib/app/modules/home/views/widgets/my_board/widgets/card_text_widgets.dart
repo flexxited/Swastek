@@ -52,6 +52,23 @@ class CardBarValueIndicatorWidget extends Text {
                 color: const Color(0xff000000)));
 }
 
+class CardLevelTextWidget extends Text {
+  CardLevelTextWidget({required String data, Color? color})
+      : super(
+          data,
+          softWrap: false,
+          overflow: TextOverflow.clip,
+          style: TextStyle(
+              fontSize: 20.sp,
+              fontFamily: "MonsReg",
+              color: color ??
+                  const Color(
+                    0xff1CC216,
+                  ),
+              fontWeight: FontWeight.w500),
+        );
+}
+
 class CardValueIndicatorBarWidget extends StatelessWidget {
   final num minima;
   final num maxima;
