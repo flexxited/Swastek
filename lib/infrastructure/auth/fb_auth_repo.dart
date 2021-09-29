@@ -90,9 +90,9 @@ class FBAuthRepo extends GetxService implements IAuth {
   // }
 
   Future<PersonDto> _personDtoFromFbUser(User user) async {
-    final idToken = await user.getIdTokenResult();
-    final claims = idToken.claims ?? <dynamic, dynamic>{};
-    final personFromFbUser = user.toDomain(claims);
+    // final idToken = await user.getIdTokenResult();
+    // final claims = idToken.claims ?? <dynamic, dynamic>{};
+    final personFromFbUser = user.toDomain();
     final personDtoFromFbUser = PersonDto.fromDomain(personFromFbUser);
     return personDtoFromFbUser;
   }
@@ -163,9 +163,9 @@ class FBAuthRepo extends GetxService implements IAuth {
         if (user == null) {
           return Future.value(none<Person>());
         } else {
-          final idToken = await user.getIdTokenResult();
-          final claims = idToken.claims ?? <dynamic, dynamic>{};
-          return some<Person>(user.toDomain(claims));
+          // final idToken = await user.getIdTokenResult();
+          // final claims = idToken.claims ?? <dynamic, dynamic>{};
+          return some<Person>(user.toDomain());
         }
       }).onErrorReturnWith((e) async {
         debugPrint("ERR:$e");

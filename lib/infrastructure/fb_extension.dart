@@ -9,14 +9,16 @@ import '../domain/core/value_objects.dart';
 import 'auth/person_dto.dart';
 
 extension FirebaseUserExt on User {
-  Person toDomain(Map<dynamic, dynamic>? claims) {
-    debugPrint("XXX:::${claims?["role"]}");
+  Person toDomain(
+      //Map<dynamic, dynamic>? claims
+      ) {
+    // debugPrint("XXX:::${claims?["role"]}");
     return Person(
       id: UniqueId.fromUniqueString(uid),
       name: Name(displayName ?? ""),
-      role: claims != null
-          ? (claims["role"].toString()).toUserRole()
-          : const UserRole.undefined(),
+      // role: claims != null
+      //     ? (claims["role"].toString()).toUserRole()
+      //     : const UserRole.undefined(),
       phoneNumber: PhoneNumber(phoneNumber ?? ""),
       picUrl: photoURL ?? "",
       lastSignInDateTime: metadata.lastSignInTime ?? DateTime.now(),
