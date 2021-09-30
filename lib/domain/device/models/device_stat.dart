@@ -44,7 +44,7 @@ abstract class DeviceStat with _$DeviceStat {
         : const DeviceStat(
             syncWord: const SyncWord(byte1: 165, byte2: 195),
             version: 3,
-            wearStatus: const WearStatus.wearingHrBpActive(),
+            wearStatus: const WearStatus.wearingOnlyHrActive(),
             batterPercentage: 50,
           );
   }

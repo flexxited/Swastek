@@ -54,7 +54,7 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
           ),
           spo2: OxygenSaturation(
               spO2: deviceDataPacket[7].getValidOxygenSaturation(),
-          spO2Level:deviceDataPacket[7].getLevels()),
+              spO2Level: deviceDataPacket[7].getLevels()),
           respiratoryRate: RespiratoryRate(
               rr: deviceDataPacket[8],
               respiratoryLevel: deviceDataPacket[8].getRespiratoryLevels()),
@@ -101,7 +101,7 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
               systolicLevel: 121.getSystolicLevels(),
               diastolic: 78,
             ),
-            coreBodyTemperature: const CoreBodyTemperature(cbt: 36.5),
+            coreBodyTemperature: const CoreBodyTemperature(cbt: 36.567),
             stepCount: const StepCount(steps: 9000),
             fallDetection: const FallDetection(isFall: true),
             heatStres: const HeatStress(hsRisk: EnHeatStressRisk.highRisk()),

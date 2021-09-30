@@ -48,11 +48,15 @@ extension CoreBodyTemperatureX on CoreBodyTemperature {
   EnLevels getLevels() {
     return map(
       (value) {
-        if (value.cbt < 36.0) {
+        if (value.cbt < 35) {
           return EnLevels.low(value: value.cbt);
-        } else if (value.cbt >= 36.0 && value.cbt <= 37.5) {
+        } else if (value.cbt >= 35 && value.cbt < 36) {
+          return EnLevels.lowNormal(value: value.cbt);
+        } else if (value.cbt >= 36 && value.cbt < 37.5) {
           return EnLevels.normal(value: value.cbt);
-        } else if (value.cbt > 37.5) {
+        } else if (value.cbt >= 37.5 && value.cbt < 38) {
+          return EnLevels.normalHigh(value: value.cbt);
+        } else if (value.cbt >= 38) {
           return EnLevels.high(value: value.cbt);
         } else {
           return const EnLevels.undetermined();

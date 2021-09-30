@@ -11,6 +11,8 @@ class BatteryClipper extends CustomClipper<Path> {
             (value) => (100 - value.batterPercentage) / 100,
             empty: (_) => 0),
         invalidDataPacket: (_) => 0);
+    print("height = $height");
+    height = 0.5;
     final path = Path();
 
     path.moveTo(0, size.height * height);

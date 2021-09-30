@@ -141,9 +141,10 @@ class HorizontalView extends StatelessWidget {
                       ),
                     )),
         ),
-        SizedBox(
-          height:
-              151.h, // trackController.isStartTracking.value ? 151.h : 213.h,
+        Expanded(
+          child: SizedBox(
+              // trackController.isStartTracking.value ? 151.h : 213.h,
+              ),
         )
       ],
     );

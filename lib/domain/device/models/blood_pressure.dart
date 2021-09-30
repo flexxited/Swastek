@@ -16,10 +16,18 @@ abstract class BloodPressure with _$BloodPressure {
 
 extension BloodPressureX on int {
   EnLevels getSystolicLevels() {
-    return this > 120
-        ? EnLevels.high(value: this)
-        : this < 90
-            ? EnLevels.low(value: this)
-            : EnLevels.normal(value: this);
+    if (this < 80) {
+      return EnLevels.low(value: this);
+    } else if (this >= 80 && this < 90) {
+      return EnLevels.lowNormal(value: this);
+    } else if (this >= 90 && this < 120) {
+      return EnLevels.normal(value: this);
+    } else if (this >= 120 && this < 140) {
+      return EnLevels.normalHigh(value: this);
+    } else if (this >= 140) {
+      return EnLevels.high(value: this);
+    } else {
+      return const EnLevels.undetermined();
+    }
   }
 }

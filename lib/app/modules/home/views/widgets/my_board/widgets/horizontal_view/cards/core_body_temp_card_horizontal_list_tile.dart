@@ -30,7 +30,7 @@ class CBTHorizontalListTile extends StatelessWidget {
       ),
       CardValueTextWidget(
         data: cbt.map(
-          (value) => value.cbt.toString(),
+          (value) => value.cbt.toStringAsFixed(1),
           empty: (_) => "0",
         ),
         fontSize: 80.sp,

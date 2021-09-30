@@ -74,7 +74,7 @@ class CBTVerticalListTile extends StatelessWidget {
                 height: 24.h,
                 child: SingleRowHealthData(
                     value: cbt.map(
-                      (value) => value.cbt.toString(),
+                      (value) => value.cbt.toStringAsFixed(1),
                       empty: (_) => "0",
                     ),
                     type: "Vital",
