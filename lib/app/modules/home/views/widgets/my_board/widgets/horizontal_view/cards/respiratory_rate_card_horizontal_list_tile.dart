@@ -41,11 +41,11 @@ class RespiratoryRateHorizontalListTile extends StatelessWidget {
             child: Container(),
           ),
           CardValueIndicatorBarWidget(
-            minima: 0.0,
-            lowPoint: 7,
-            normalPoint: 15,
-            highPoint: 20,
-            maxima: 100,
+            minima: 5,
+            lowPoint: 9,
+            normalPoint: 16,
+            highPoint: 22,
+            maxima: 30,
             value: rr.rr,
             isNormal: rr.respiratoryLevel.map(
               low: (_) => false,

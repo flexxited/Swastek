@@ -43,11 +43,11 @@ class CBTHorizontalListTile extends StatelessWidget {
         child: Container(),
       ),
       CardValueIndicatorBarWidget(
-        minima: 40,
-        lowPoint: 36,
-        normalPoint: 37.5,
-        highPoint: 38,
-        maxima: 45,
+        minima: 32,
+        lowPoint: 35.5,
+        normalPoint: 36.75,
+        highPoint: 37.75,
+        maxima: 40,
         value: cbt.map(
           (value) => value.cbt,
           empty: (_) => 0,

@@ -82,28 +82,29 @@ class HeartRateListTile extends StatelessWidget {
                     //   padding: 230,
                     units: "beats/minute",
                     level: controller.deviceData.value.map(
-                          (value) => value.heartRate.vitalLevel.map(
-                      low: (_) => "LOW",
-                      lowNormal: (_) => "LOW",
-                      normal: (_) => "NORMAL",
-                      normalHigh: (_) => "HIGH",
-                      high: (_) => "HIGH",
-                      undetermined: (_) => "UNDETERMINED",
-                    ), invalidDataPacket: (_) => "INVALID",
+                      (value) => value.heartRate.vitalLevel.map(
+                        low: (_) => "LOW",
+                        lowNormal: (_) => "LOW",
+                        normal: (_) => "NORMAL",
+                        normalHigh: (_) => "HIGH",
+                        high: (_) => "HIGH",
+                        undetermined: (_) => "UNDETERMINED",
+                      ),
+                      invalidDataPacket: (_) => "INVALID",
                     ),
                     color: controller.deviceData.value.map(
-                  (value) => value.heartRate.vitalLevel.map(
-                      low: (_) => Color(0xffFF0000),
-                      lowNormal: (_) => Color(0xffFF0000),
-                      normal: (_) => Color(
-                        0xff1CC216,
+                      (value) => value.heartRate.vitalLevel.map(
+                        low: (_) => Color(0xffFF0000),
+                        lowNormal: (_) => Color(0xffFF0000),
+                        normal: (_) => Color(
+                          0xff1CC216,
+                        ),
+                        normalHigh: (_) => Color(0xffFF0000),
+                        high: (_) => Color(0xffFF0000),
+                        undetermined: (_) => Colors.black,
                       ),
-                      normalHigh: (_) => Color(0xffFF0000),
-                      high: (_) => Color(0xffFF0000),
-                      undetermined: (_) => Colors.black,
-                    ),
                       invalidDataPacket: (_) => Colors.black,
-          ),
+                    ),
                   ),
                 ),
               ),
@@ -114,11 +115,11 @@ class HeartRateListTile extends StatelessWidget {
           ),
           Obx(
             () => CardValueIndicatorBarWidget(
-              minima: 0,
-              lowPoint: 20,
-              normalPoint: 40,
-              highPoint: 50,
-              maxima: 100,
+              minima: 20,
+              lowPoint: 60,
+              normalPoint: 80,
+              highPoint: 95,
+              maxima: 210,
               value: controller.deviceData.value.map(
                 (value) => value.heartRate.vital,
                 invalidDataPacket: (_) => 0.0,

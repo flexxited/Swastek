@@ -42,11 +42,11 @@ class BloodPressureHorizontalListTile extends StatelessWidget {
             child: Container(),
           ),
           CardValueIndicatorBarWidget(
-            minima: 0.0,
-            lowPoint: 90,
-            normalPoint: 95,
-            highPoint: 100,
-            maxima: 100,
+            minima: 50,
+            lowPoint: 85,
+            normalPoint: 105,
+            highPoint: 130,
+            maxima: 160,
             value: bp.systolic,
             isNormal: bp.systolicLevel.map(
               low: (_) => false,
@@ -65,7 +65,7 @@ class BloodPressureHorizontalListTile extends StatelessWidget {
               low: (_) => "LOW",
               lowNormal: (_) => "LOW",
               normal: (_) => "NORMAL",
-              normalHigh: (_) => "HIGH",
+              normalHigh: (_) => "NORMAL",
               high: (_) => "HIGH",
               undetermined: (_) => "UNDETERMINED",
             ),
@@ -75,7 +75,9 @@ class BloodPressureHorizontalListTile extends StatelessWidget {
               normal: (_) => Color(
                 0xff1CC216,
               ),
-              normalHigh: (_) => Color(0xffFF0000),
+              normalHigh: (_) => Color(
+                0xff1CC216,
+              ),
               high: (_) => Color(0xffFF0000),
               undetermined: (_) => Colors.black,
             ),

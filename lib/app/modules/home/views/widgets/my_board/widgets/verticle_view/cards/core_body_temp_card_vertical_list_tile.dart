@@ -111,11 +111,11 @@ class CBTVerticalListTile extends StatelessWidget {
             height: 15.h,
           ),
           CardValueIndicatorBarWidget(
-            minima: 0,
-            lowPoint: 20,
-            normalPoint: 40,
-            highPoint: 50,
-            maxima: 100,
+            minima: 32,
+            lowPoint: 35.5,
+            normalPoint: 36.75,
+            highPoint: 37.75,
+            maxima: 40,
             value: cbt.map(
               (value) => value.cbt,
               empty: (_) => 0,

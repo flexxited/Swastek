@@ -41,11 +41,11 @@ class HeartRateHorizontalListTile extends StatelessWidget {
             child: Container(),
           ),
           CardValueIndicatorBarWidget(
-            minima: 0.0,
+            minima: 20,
             lowPoint: 60,
-            normalPoint: 72,
-            highPoint: 120,
-            maxima: 190,
+            normalPoint: 80,
+            highPoint: 95,
+            maxima: 210,
             value: heartRate.vital,
             isNormal: heartRate.vitalLevel.map(
               low: (_) => false,

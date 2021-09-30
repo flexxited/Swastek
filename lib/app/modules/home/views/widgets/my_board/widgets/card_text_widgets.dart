@@ -130,7 +130,10 @@ class CardValueIndicatorBarWidget extends StatelessWidget {
               //Circular indicator
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 400),
-                left: value - minima / (maxima - minima) * width,
+                left: (((value - minima) / (maxima - minima)) * width) >
+                        width - 18.w
+                    ? width - 18.w
+                    : ((value - minima) / (maxima - minima)) * width,
                 child: Container(
                   width: 18.0.w,
                   height: 18.0.h,
