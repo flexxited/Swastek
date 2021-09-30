@@ -193,7 +193,7 @@ class HeadsetOff extends StatelessWidget {
     return Icon(
       Icons.headset_off,
       size: 27.sp,
-      color: Theme.of(context).accentColor,
+      color: Color(0xff00D0C3).withOpacity(0.5),
     );
   }
 }
