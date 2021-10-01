@@ -81,9 +81,9 @@ class RespiratoryRateVerticalListTile extends StatelessWidget {
                   units: "breaths/min",
                   level: rr.respiratoryLevel.map(
                     low: (_) => "LOW",
-                    lowNormal: (_) => "LOW",
+                    lowNormal: (_) => "BELOW NORMAL",
                     normal: (_) => "NORMAL",
-                    normalHigh: (_) => "HIGH",
+                    normalHigh: (_) => "ABOVE NORMAL",
                     high: (_) => "HIGH",
                     undetermined: (_) => "UNDETERMINED",
                   ),
@@ -93,7 +93,9 @@ class RespiratoryRateVerticalListTile extends StatelessWidget {
                     normal: (_) => Color(
                       0xff1CC216,
                     ),
-                    normalHigh: (_) => Color(0xffFF0000),
+                    normalHigh: (_) => Color(
+                      0xff1CC216,
+                    ),
                     high: (_) => Color(0xffFF0000),
                     undetermined: (_) => Colors.black,
                   ),

@@ -40,7 +40,7 @@ class StepCountHorizontalListTile extends StatelessWidget {
           SizedBox(
             height: 5.h,
           ),
-          CardValueUnitWidget(data: "degree Celcius"),
+          CardValueUnitWidget(data: ""),
           Expanded(
             child: Container(),
           ),

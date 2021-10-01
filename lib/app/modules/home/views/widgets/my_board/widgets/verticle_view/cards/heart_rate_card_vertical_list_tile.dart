@@ -17,7 +17,7 @@ class HeartRateListTile extends StatelessWidget {
     final controller = Get.find<DeviceController>();
     return Container(
       width: 394.w,
-      height: 199.h,
+      height: 220.h,
       decoration: verticalViewCardBoxDecoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,44 +66,83 @@ class HeartRateListTile extends StatelessWidget {
             padding: EdgeInsets.only(left: 9.w),
             child: Container(
               width: 376.w,
-              height: 39.h,
+              height: 60.h,
               decoration: const BoxDecoration(
                   color: Color(0xffDADBDE),
                   borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: SizedBox(
-                height: 24.h,
-                child: Obx(
-                  () => SingleRowHealthData(
-                    value: controller.deviceData.value.map(
-                      (value) => value.heartRate.vital.toString(),
-                      invalidDataPacket: (_) => "Invalid Data",
-                    ),
-                    type: "Vital",
-                    //   padding: 230,
-                    units: "beats/minute",
-                    level: controller.deviceData.value.map(
-                      (value) => value.heartRate.vitalLevel.map(
-                        low: (_) => "LOW",
-                        lowNormal: (_) => "LOW",
-                        normal: (_) => "NORMAL",
-                        normalHigh: (_) => "HIGH",
-                        high: (_) => "HIGH",
-                        undetermined: (_) => "UNDETERMINED",
+              child: Center(
+                child: SizedBox(
+                  height: 49.h,
+                  child: Obx(
+                    () => DoubleRowHealthData(
+                      value1: controller.deviceData.value.map(
+                        (value) => value.heartRate.vital.toString(),
+                        invalidDataPacket: (_) => "Invalid Data",
                       ),
-                      invalidDataPacket: (_) => "INVALID",
-                    ),
-                    color: controller.deviceData.value.map(
-                      (value) => value.heartRate.vitalLevel.map(
-                        low: (_) => Color(0xffFF0000),
-                        lowNormal: (_) => Color(0xffFF0000),
-                        normal: (_) => Color(
-                          0xff1CC216,
+                      type1: "Vital",
+                      //   padding: 230,
+                      units1: "beats/minute",
+                      level1: controller.deviceData.value.map(
+                        (value) => value.heartRate.vitalLevel.map(
+                          low: (_) => "LOW",
+                          lowNormal: (_) => "BELOW NORMAL",
+                          normal: (_) => "NORMAL",
+                          normalHigh: (_) => "ABOVE NORMAL",
+                          high: (_) => "HIGH",
+                          undetermined: (_) => "UNDETERMINED",
                         ),
-                        normalHigh: (_) => Color(0xffFF0000),
-                        high: (_) => Color(0xffFF0000),
-                        undetermined: (_) => Colors.black,
+                        invalidDataPacket: (_) => "INVALID",
                       ),
-                      invalidDataPacket: (_) => Colors.black,
+                      color1: controller.deviceData.value.map(
+                        (value) => value.heartRate.vitalLevel.map(
+                          low: (_) => Color(0xffFF0000),
+                          lowNormal: (_) => Color(0xffFF0000),
+                          normal: (_) => Color(
+                            0xff1CC216,
+                          ),
+                          normalHigh: (_) => Color(
+                            0xff1CC216,
+                          ),
+                          high: (_) => Color(0xffFF0000),
+                          undetermined: (_) => Colors.black,
+                        ),
+                        invalidDataPacket: (_) => Colors.black,
+                      ),
+                      value2: controller.deviceData.value.map(
+                        (value) => value.heartRate.variability.toString(),
+                        invalidDataPacket: (_) => "Invalid Data",
+                      ),
+                      type2: "Variability",
+                      //   padding: 230,
+                      units2: "beats/minute",
+                      level2: controller.deviceData.value.map(
+                        (value) => value.heartRate.viriabilityLevel.map(
+                          low: (_) => "LOW",
+                          lowNormal: (_) => "BELOW NORMAL",
+                          normal: (_) => "NORMAL",
+                          normalHigh: (_) => "ABOVE NORMAL",
+                          high: (_) => "HIGH",
+                          undetermined: (_) => "UNDETERMINED",
+                        ),
+                        invalidDataPacket: (_) => "INVALID",
+                      ),
+                      color2: controller.deviceData.value.map(
+                        (value) => value.heartRate.viriabilityLevel.map(
+                          low: (_) => Color(
+                            0xff1CC216,
+                          ),
+                          lowNormal: (_) => Color(0xffFF0000),
+                          normal: (_) => Color(
+                            0xff1CC216,
+                          ),
+                          normalHigh: (_) => Color(
+                            0xff1CC216,
+                          ),
+                          high: (_) => Color(0xffFF0000),
+                          undetermined: (_) => Colors.black,
+                        ),
+                        invalidDataPacket: (_) => Colors.black,
+                      ),
                     ),
                   ),
                 ),

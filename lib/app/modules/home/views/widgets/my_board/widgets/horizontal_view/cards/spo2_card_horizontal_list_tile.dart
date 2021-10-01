@@ -41,13 +41,13 @@ class Spo2HorizontalListTile extends StatelessWidget {
             child: Container(),
           ),
           CardValueIndicatorBarWidget(
-            minima: 0.0,
-            lowPoint: 90,
-            normalPoint: 95,
+            minima: 60,
+            lowPoint: 92,
+            normalPoint: 100,
             highPoint: 100,
             maxima: 100,
             value: spo2.spO2.getValidOxygenSaturation(),
-            isNormal: spo2.spO2 >= 93,
+            isNormal: spo2.spO2 >= 90,
           ),
           SizedBox(
             height: 20.h,
@@ -55,15 +55,17 @@ class Spo2HorizontalListTile extends StatelessWidget {
           CardLevelTextWidget(
             data: spo2.spO2Level.map(
               low: (_) => "LOW",
-              lowNormal: (_) => "LOW",
+              lowNormal: (_) => "BELOW NORMAL",
               normal: (_) => "NORMAL",
-              normalHigh: (_) => "HIGH",
+              normalHigh: (_) => "ABOVE NORMAL",
               high: (_) => "HIGH",
               undetermined: (_) => "UNDETERMINED",
             ),
             color: spo2.spO2Level.map(
               low: (_) => Color(0xffFF0000),
-              lowNormal: (_) => Color(0xffFF0000),
+              lowNormal: (_) => Color(
+                0xff1CC216,
+              ),
               normal: (_) => Color(
                 0xff1CC216,
               ),

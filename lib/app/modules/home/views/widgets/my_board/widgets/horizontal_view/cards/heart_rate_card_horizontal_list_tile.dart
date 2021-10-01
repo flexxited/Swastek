@@ -31,12 +31,13 @@ class HeartRateHorizontalListTile extends StatelessWidget {
             height: 16.h,
           ),
           CardValueTextWidget(
-            data: heartRate.vital.toString(),
+            data: "${heartRate.vital}/${heartRate.variability}",
+            fontSize: 80.sp,
           ),
           SizedBox(
             height: 5.h,
           ),
-          CardValueUnitWidget(data: "beats/sec"),
+          CardValueUnitWidget(data: "beats/min"),
           Expanded(
             child: Container(),
           ),
@@ -62,9 +63,9 @@ class HeartRateHorizontalListTile extends StatelessWidget {
           CardLevelTextWidget(
             data: heartRate.vitalLevel.map(
               low: (_) => "LOW",
-              lowNormal: (_) => "LOW",
+              lowNormal: (_) => "BELOW NORMAL",
               normal: (_) => "NORMAL",
-              normalHigh: (_) => "HIGH",
+              normalHigh: (_) => "ABOVE NORMAL",
               high: (_) => "HIGH",
               undetermined: (_) => "UNDETERMINED",
             ),
@@ -74,7 +75,9 @@ class HeartRateHorizontalListTile extends StatelessWidget {
               normal: (_) => Color(
                 0xff1CC216,
               ),
-              normalHigh: (_) => Color(0xffFF0000),
+              normalHigh: (_) => Color(
+                0xff1CC216,
+              ),
               high: (_) => Color(0xffFF0000),
               undetermined: (_) => Colors.black,
             ),

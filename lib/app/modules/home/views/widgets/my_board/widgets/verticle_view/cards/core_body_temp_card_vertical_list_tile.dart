@@ -83,9 +83,9 @@ class CBTVerticalListTile extends StatelessWidget {
                     level: cbt.map(
                       (value) => value.getLevels().map(
                             low: (_) => "LOW",
-                            lowNormal: (_) => "LOW",
+                            lowNormal: (_) => "BELOW NORMAL",
                             normal: (_) => "NORMAL",
-                            normalHigh: (_) => "HIGH",
+                            normalHigh: (_) => "ABOVE NORMAL",
                             high: (_) => "HIGH",
                             undetermined: (_) => "UNDETERMINED",
                           ),
@@ -94,7 +94,9 @@ class CBTVerticalListTile extends StatelessWidget {
                     color: cbt.map(
                       (value) => value.getLevels().map(
                             low: (_) => Color(0xffFF0000),
-                            lowNormal: (_) => Color(0xffFF0000),
+                            lowNormal: (_) => Color(
+                              0xff1CC216,
+                            ),
                             normal: (_) => Color(
                               0xff1CC216,
                             ),

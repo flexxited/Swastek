@@ -63,9 +63,9 @@ class BloodPressureHorizontalListTile extends StatelessWidget {
           CardLevelTextWidget(
             data: bp.systolicLevel.map(
               low: (_) => "LOW",
-              lowNormal: (_) => "LOW",
+              lowNormal: (_) => "BELOW NORMAL",
               normal: (_) => "NORMAL",
-              normalHigh: (_) => "NORMAL",
+              normalHigh: (_) => "ABOVE NORMAL",
               high: (_) => "HIGH",
               undetermined: (_) => "UNDETERMINED",
             ),

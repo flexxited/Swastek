@@ -81,15 +81,17 @@ class Spo2VerticalListTile extends StatelessWidget {
                   units: "percent",
                   level: spo2.spO2Level.map(
                     low: (_) => "LOW",
-                    lowNormal: (_) => "LOW",
+                    lowNormal: (_) => "BELOW NORMAL",
                     normal: (_) => "NORMAL",
-                    normalHigh: (_) => "HIGH",
+                    normalHigh: (_) => "ABOVE NORMAL",
                     high: (_) => "HIGH",
                     undetermined: (_) => "UNDETERMINED",
                   ),
                   color: spo2.spO2Level.map(
                     low: (_) => Color(0xffFF0000),
-                    lowNormal: (_) => Color(0xffFF0000),
+                    lowNormal: (_) => Color(
+                      0xff1CC216,
+                    ),
                     normal: (_) => Color(
                       0xff1CC216,
                     ),
@@ -105,13 +107,13 @@ class Spo2VerticalListTile extends StatelessWidget {
             height: 15.h,
           ),
           CardValueIndicatorBarWidget(
-            minima: 0.0,
-            lowPoint: 90,
-            normalPoint: 95,
+            minima: 60,
+            lowPoint: 92,
+            normalPoint: 100,
             highPoint: 100,
             maxima: 100,
             value: spo2.spO2.getValidOxygenSaturation(),
-            isNormal: spo2.spO2 >= 93,
+            isNormal: spo2.spO2 >= 90,
           ),
         ],
       ),

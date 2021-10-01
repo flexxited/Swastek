@@ -17,7 +17,7 @@ class BloodPressureVerticalListTile extends StatelessWidget {
     final controller = Get.find<DeviceController>();
     return Container(
       width: 394.w,
-      height: 292.h,
+      height: 220.h,
       decoration: verticalViewCardBoxDecoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,9 +80,9 @@ class BloodPressureVerticalListTile extends StatelessWidget {
                     units1: "mmHg",
                     level1: bp.systolicLevel.map(
                       low: (_) => "LOW",
-                      lowNormal: (_) => "LOW",
+                      lowNormal: (_) => "BELOW NORMAL",
                       normal: (_) => "NORMAL",
-                      normalHigh: (_) => "NORMAL",
+                      normalHigh: (_) => "ABOVE NORMAL",
                       high: (_) => "HIGH",
                       undetermined: (_) => "UNDETERMINED",
                     ),
@@ -137,25 +137,6 @@ class BloodPressureVerticalListTile extends StatelessWidget {
             highPoint: 130,
             maxima: 160,
             value: bp.systolic,
-            isNormal: bp.systolicLevel.map(
-              low: (_) => false,
-              lowNormal: (_) => false,
-              normal: (_) => true,
-              normalHigh: (_) => true,
-              high: (_) => false,
-              undetermined: (_) => false,
-            ),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          CardValueIndicatorBarWidget(
-            minima: 0,
-            lowPoint: 90,
-            normalPoint: 95,
-            highPoint: 95,
-            maxima: 100,
-            value: bp.diastolic,
             isNormal: bp.systolicLevel.map(
               low: (_) => false,
               lowNormal: (_) => false,
