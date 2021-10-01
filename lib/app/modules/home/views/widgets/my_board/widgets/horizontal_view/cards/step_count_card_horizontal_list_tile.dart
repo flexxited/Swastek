@@ -1,6 +1,9 @@
+import 'package:flexxited_swastek/app/modules/home/controllers/device_controller.dart';
 import 'package:flexxited_swastek/domain/device/models/step_count.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../card_text_widgets.dart';
 import 'horizontal_card_container.dart';
@@ -25,7 +28,12 @@ class StepCountHorizontalListTile extends StatelessWidget {
             height: 9.h,
           ),
           CardTimeTextWidget(
-            data: "8:40 Am",
+            data: Get.find<DeviceController>()
+                .deviceData
+                .value
+                .map((value) => DateFormat.jm().format(value.receivedtime!),
+                    invalidDataPacket: (_) => null)
+                .toString(),
           ),
           SizedBox(
             height: 16.h,

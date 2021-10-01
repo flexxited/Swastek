@@ -27,7 +27,7 @@ class _$DeviceDataPacketTearOff {
       required FallDetection fallDetection,
       required HeatStress heatStres,
       required Posture posture,
-      required DateTime receivedtime}) {
+      DateTime? receivedtime}) {
     return _DeviceDataPacket(
       deviceStat: deviceStat,
       heartRate: heartRate,
@@ -68,7 +68,7 @@ mixin _$DeviceDataPacket {
             FallDetection fallDetection,
             HeatStress heatStres,
             Posture posture,
-            DateTime receivedtime)
+            DateTime? receivedtime)
         $default, {
     required TResult Function(String msg) invalidDataPacket,
   }) =>
@@ -86,7 +86,7 @@ mixin _$DeviceDataPacket {
             FallDetection fallDetection,
             HeatStress heatStres,
             Posture posture,
-            DateTime receivedtime)?
+            DateTime? receivedtime)?
         $default, {
     TResult Function(String msg)? invalidDataPacket,
     required TResult orElse(),
@@ -140,7 +140,7 @@ abstract class _$DeviceDataPacketCopyWith<$Res> {
       FallDetection fallDetection,
       HeatStress heatStres,
       Posture posture,
-      DateTime receivedtime});
+      DateTime? receivedtime});
 
   $DeviceStatCopyWith<$Res> get deviceStat;
   $HeartRateCopyWith<$Res> get heartRate;
@@ -223,7 +223,7 @@ class __$DeviceDataPacketCopyWithImpl<$Res>
       receivedtime: receivedtime == freezed
           ? _value.receivedtime
           : receivedtime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 
@@ -315,7 +315,7 @@ class _$_DeviceDataPacket
       required this.fallDetection,
       required this.heatStres,
       required this.posture,
-      required this.receivedtime});
+      this.receivedtime});
 
   @override
   final DeviceStat deviceStat;
@@ -338,7 +338,7 @@ class _$_DeviceDataPacket
   @override
   final Posture posture;
   @override
-  final DateTime receivedtime;
+  final DateTime? receivedtime;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -435,7 +435,7 @@ class _$_DeviceDataPacket
             FallDetection fallDetection,
             HeatStress heatStres,
             Posture posture,
-            DateTime receivedtime)
+            DateTime? receivedtime)
         $default, {
     required TResult Function(String msg) invalidDataPacket,
   }) {
@@ -467,7 +467,7 @@ class _$_DeviceDataPacket
             FallDetection fallDetection,
             HeatStress heatStres,
             Posture posture,
-            DateTime receivedtime)?
+            DateTime? receivedtime)?
         $default, {
     TResult Function(String msg)? invalidDataPacket,
     required TResult orElse(),
@@ -524,7 +524,7 @@ abstract class _DeviceDataPacket implements DeviceDataPacket {
       required FallDetection fallDetection,
       required HeatStress heatStres,
       required Posture posture,
-      required DateTime receivedtime}) = _$_DeviceDataPacket;
+      DateTime? receivedtime}) = _$_DeviceDataPacket;
 
   DeviceStat get deviceStat => throw _privateConstructorUsedError;
   HeartRate get heartRate => throw _privateConstructorUsedError;
@@ -537,7 +537,7 @@ abstract class _DeviceDataPacket implements DeviceDataPacket {
   FallDetection get fallDetection => throw _privateConstructorUsedError;
   HeatStress get heatStres => throw _privateConstructorUsedError;
   Posture get posture => throw _privateConstructorUsedError;
-  DateTime get receivedtime => throw _privateConstructorUsedError;
+  DateTime? get receivedtime => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DeviceDataPacketCopyWith<_DeviceDataPacket> get copyWith =>
       throw _privateConstructorUsedError;
@@ -629,7 +629,7 @@ class _$_InvalidDataPacket
             FallDetection fallDetection,
             HeatStress heatStres,
             Posture posture,
-            DateTime receivedtime)
+            DateTime? receivedtime)
         $default, {
     required TResult Function(String msg) invalidDataPacket,
   }) {
@@ -650,7 +650,7 @@ class _$_InvalidDataPacket
             FallDetection fallDetection,
             HeatStress heatStres,
             Posture posture,
-            DateTime receivedtime)?
+            DateTime? receivedtime)?
         $default, {
     TResult Function(String msg)? invalidDataPacket,
     required TResult orElse(),

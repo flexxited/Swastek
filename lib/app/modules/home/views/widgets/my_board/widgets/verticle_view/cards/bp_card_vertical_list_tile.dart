@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../../start_tracking_styles.dart';
 import '../../card_text_widgets.dart';
 import 'health_data_row.dart';
+import 'package:intl/intl.dart';
 
 class BloodPressureVerticalListTile extends StatelessWidget {
   final BloodPressure bp;
@@ -54,7 +55,7 @@ class BloodPressureVerticalListTile extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 30.w),
             child: Text(
-              "Last entry recorded at 08:42 AM",
+              "Last entry recorded at ${Get.find<DeviceController>().deviceData.value.map((value) => DateFormat.jm().format(value.receivedtime!), invalidDataPacket: (_) => null)}",
               style: TextStyle(
                   fontSize: 12.sp,
                   fontFamily: "SeogeReg",

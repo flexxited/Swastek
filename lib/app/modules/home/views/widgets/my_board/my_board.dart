@@ -8,9 +8,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
+import 'package:intl/intl.dart';
 import 'widgets/horizontal_view/horizontal_view.dart';
 import 'widgets/verticle_view/vertical_view.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class MyBoard extends GetView<MyBoardController> {
   const MyBoard({
@@ -23,6 +24,24 @@ class MyBoard extends GetView<MyBoardController> {
         (value) => value.deviceStat
             .map((value) => (value.batterPercentage), empty: (_) => 0),
         invalidDataPacket: (_) => 0);
+
+    final String timeAgo = Get.find<DeviceController>()
+        .deviceData
+        .value
+        .map((value) => timeago.format(value.receivedtime!),
+            invalidDataPacket: (_) => null)
+        .toString();
+
+    final String final_timeAgo = timeAgo.contains("minutes") ||
+            timeAgo.contains("minute") ||
+            timeAgo.contains("moment")
+        ? timeAgo
+        : Get.find<DeviceController>()
+            .deviceData
+            .value
+            .map((value) => DateFormat.jm().format(value.receivedtime!),
+                invalidDataPacket: (_) => null)
+            .toString();
 
     final String deviceName = Get.find<DeviceController>().deviceData.value.map(
         (value) => value.deviceStat.map(
@@ -140,7 +159,7 @@ class MyBoard extends GetView<MyBoardController> {
             Padding(
               padding: EdgeInsets.only(top: 9.h),
               child: Center(
-                child: Text("Last synced 0 minutes ago",
+                child: Text("Last synced $final_timeAgo",
                     style: TextStyle(
                         fontSize: 12.sp,
                         fontFamily: "MonsReg",

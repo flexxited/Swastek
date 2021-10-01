@@ -1,6 +1,9 @@
+import 'package:flexxited_swastek/app/modules/home/controllers/device_controller.dart';
 import 'package:flexxited_swastek/domain/device/models/mental_stress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../../../../../domain/device/models/heat_stress.dart';
 import '../../card_text_widgets.dart';
@@ -26,7 +29,12 @@ class MentalStressHorizontalListTile extends StatelessWidget {
             height: 9.h,
           ),
           CardTimeTextWidget(
-            data: "8:40 Am",
+            data: Get.find<DeviceController>()
+                .deviceData
+                .value
+                .map((value) => DateFormat.jm().format(value.receivedtime!),
+                invalidDataPacket: (_) => null)
+                .toString(),
           ),
           Expanded(child: Container()),
           CardValueTextWidget(

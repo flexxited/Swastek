@@ -4,6 +4,7 @@ import 'package:flexxited_swastek/domain/device/models/respiratory_rate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../start_tracking_styles.dart';
 import '../../card_text_widgets.dart';
@@ -56,7 +57,7 @@ class RespiratoryRateVerticalListTile extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 30.w),
             child: Text(
-              "Last entry recorded at 08:42 AM",
+              "Last entry recorded at ${Get.find<DeviceController>().deviceData.value.map((value) => DateFormat.jm().format(value.receivedtime!), invalidDataPacket: (_) => null)}",
               style: TextStyle(
                   fontSize: 12.sp,
                   fontFamily: "SeogeReg",

@@ -1,5 +1,8 @@
+import 'package:flexxited_swastek/app/modules/home/controllers/device_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../../../../../domain/device/models/heart_rate.dart';
 import '../../card_text_widgets.dart';
@@ -25,7 +28,12 @@ class HeartRateHorizontalListTile extends StatelessWidget {
             height: 9.h,
           ),
           CardTimeTextWidget(
-            data: "8:40 Am",
+            data: Get.find<DeviceController>()
+                .deviceData
+                .value
+                .map((value) => DateFormat.jm().format(value.receivedtime!),
+                invalidDataPacket: (_) => null)
+                .toString(),
           ),
           SizedBox(
             height: 16.h,
