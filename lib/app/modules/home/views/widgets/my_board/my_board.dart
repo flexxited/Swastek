@@ -19,10 +19,17 @@ class MyBoard extends GetView<MyBoardController> {
   @override
   Widget build(BuildContext context) {
     // final homecontroller = Get.put<HomeController>(Get.find());//Todo
-    var battery = Get.find<DeviceController>().deviceData.value.map(
+    final battery = Get.find<DeviceController>().deviceData.value.map(
         (value) => value.deviceStat
             .map((value) => (value.batterPercentage), empty: (_) => 0),
         invalidDataPacket: (_) => 0);
+
+    final String deviceName = Get.find<DeviceController>().deviceData.value.map(
+        (value) => value.deviceStat.map(
+            (value) => (value.deviceName.getOrElse("NA")),
+            empty: (_) => "EMPTY"),
+        invalidDataPacket: (_) => "INVALID");
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -65,7 +72,8 @@ class MyBoard extends GetView<MyBoardController> {
                           child: Icon(
                             Icons.battery_full_outlined,
                             size: 27.sp,
-                            color: const Color(0xff00D0C3),
+                            color:
+                                battery <= 15 ? Colors.red : Color(0xff00D0C3),
                           ),
                         ),
                       ],
@@ -162,7 +170,7 @@ class MyBoard extends GetView<MyBoardController> {
             ),
             Center(
               child: Text(
-                "Connected to Device GHIJKL",
+                "Connected to $deviceName",
                 style: TextStyle(
                     color: const Color(0xffF9F9F9),
                     fontSize: 12.sp,
