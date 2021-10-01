@@ -4,13 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BatteryClipper extends CustomClipper<Path> {
+  final double height;
+  BatteryClipper({required this.height});
   @override
   Path getClip(Size size) {
-    var height = Get.find<DeviceController>().deviceData.value.map(
-        (value) => value.deviceStat.map(
-            (value) => (100 - value.batterPercentage) / 100,
-            empty: (_) => 0),
-        invalidDataPacket: (_) => 0);
     final path = Path();
 
     path.moveTo(0, size.height * height);

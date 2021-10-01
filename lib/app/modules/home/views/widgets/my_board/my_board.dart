@@ -20,34 +20,7 @@ class MyBoard extends GetView<MyBoardController> {
   @override
   Widget build(BuildContext context) {
     // final homecontroller = Get.put<HomeController>(Get.find());//Todo
-    final battery = Get.find<DeviceController>().deviceData.value.map(
-        (value) => value.deviceStat
-            .map((value) => (value.batterPercentage), empty: (_) => 0),
-        invalidDataPacket: (_) => 0);
-
-    final String timeAgo = Get.find<DeviceController>()
-        .deviceData
-        .value
-        .map((value) => timeago.format(value.receivedtime!),
-            invalidDataPacket: (_) => "NA")
-        .toString();
-
-    final String final_timeAgo = timeAgo.contains("minutes") ||
-            timeAgo.contains("minute") ||
-            timeAgo.contains("moment")
-        ? timeAgo
-        : Get.find<DeviceController>()
-            .deviceData
-            .value
-            .map((value) => DateFormat.jm().format(value.receivedtime!),
-                invalidDataPacket: (_) => "NA")
-            .toString();
-
-    final String deviceName = Get.find<DeviceController>().deviceData.value.map(
-        (value) => value.deviceStat.map(
-            (value) => (value.deviceName.getOrElse("NA")),
-            empty: (_) => "EMPTY"),
-        invalidDataPacket: (_) => "INVALID");
+    final deviceController = Get.find<DeviceController>();
 
     return SafeArea(
       child: Scaffold(
@@ -79,24 +52,7 @@ class MyBoard extends GetView<MyBoardController> {
                         invalidDataPacket: (_) => SizedBox(
                               width: 27.sp,
                             )),
-                    Stack(
-                      children: [
-                        Icon(
-                          Icons.battery_full_outlined,
-                          size: 27.sp,
-                          color: const Color(0xff00D0C3).withOpacity(0.5),
-                        ),
-                        ClipPath(
-                          clipper: BatteryClipper(),
-                          child: Icon(
-                            Icons.battery_full_outlined,
-                            size: 27.sp,
-                            color:
-                                battery <= 15 ? Colors.red : Color(0xff00D0C3),
-                          ),
-                        ),
-                      ],
-                    ),
+                    BatteryIcon(),
                     Icon(
                       Icons.rss_feed,
                       size: 27.sp,
@@ -158,23 +114,44 @@ class MyBoard extends GetView<MyBoardController> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 9.h),
-              child: Center(
-                child: Text("Last synced $final_timeAgo",
+              child: Center(child: Obx(() {
+                final String timeAgo = deviceController.deviceData.value
+                    .map((value) => timeago.format(value.receivedtime),
+                        invalidDataPacket: (_) => "NA")
+                    .toString();
+
+                final String final_timeAgo = timeAgo.contains("minutes") ||
+                        timeAgo.contains("minute") ||
+                        timeAgo.contains("moment")
+                    ? timeAgo
+                    : Get.find<DeviceController>()
+                        .deviceData
+                        .value
+                        .map(
+                            (value) =>
+                                DateFormat.jm().format(value.receivedtime),
+                            invalidDataPacket: (_) => "NA")
+                        .toString();
+                return Text("Last synced $final_timeAgo",
                     style: TextStyle(
                         fontSize: 12.sp,
                         fontFamily: "MonsReg",
-                        color: const Color(0xffBCBCBC))),
-              ),
+                        color: const Color(0xffBCBCBC)));
+              })),
             ),
             Padding(
               padding: EdgeInsets.only(top: 9.h),
               child: Center(
-                child: Text("Device Battery: $battery%",
-                    style: TextStyle(
-                        fontSize: 12.sp,
-                        fontFamily: "MonsReg",
-                        color: const Color(0xffBCBCBC))),
-              ),
+                  child: Obx(
+                () => Text(
+                  "Device Battery: ${deviceController.deviceData.value.map((value) => value.deviceStat.map((value) => (value.batterPercentage), empty: (_) => 0), invalidDataPacket: (_) => 0)}%",
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    fontFamily: "MonsReg",
+                    color: const Color(0xffBCBCBC),
+                  ),
+                ),
+              )),
             ),
             Expanded(
               child: SizedBox(
@@ -188,18 +165,49 @@ class MyBoard extends GetView<MyBoardController> {
               ),
             ),
             Center(
-              child: Text(
-                "Connected to $deviceName",
-                style: TextStyle(
-                    color: const Color(0xffF9F9F9),
-                    fontSize: 12.sp,
-                    fontFamily: "SeogeReg"),
+              child: Obx(
+                () => Text(
+                  "Connected to ${deviceController.deviceData.value.map((value) => value.deviceStat.map((value) => (value.deviceName.getOrElse("NA")), empty: (_) => "EMPTY"), invalidDataPacket: (_) => "INVALID")}",
+                  style: TextStyle(
+                      color: const Color(0xffF9F9F9),
+                      fontSize: 12.sp,
+                      fontFamily: "SeogeReg"),
+                ),
               ),
             )
           ],
         ),
       ),
     );
+  }
+}
+
+class BatteryIcon extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      final battery = Get.find<DeviceController>().deviceData.value.map(
+          (value) => value.deviceStat
+              .map((value) => (value.batterPercentage), empty: (_) => 0),
+          invalidDataPacket: (_) => 0);
+      return Stack(
+        children: [
+          Icon(
+            Icons.battery_full_outlined,
+            size: 27.sp,
+            color: const Color(0xff00D0C3).withOpacity(0.5),
+          ),
+          ClipPath(
+            clipper: BatteryClipper(height: (100 - battery) / 100),
+            child: Icon(
+              Icons.battery_full_outlined,
+              size: 27.sp,
+              color: battery <= 15 ? Colors.red : Color(0xff00D0C3),
+            ),
+          ),
+        ],
+      );
+    });
   }
 }
 

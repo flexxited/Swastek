@@ -29,7 +29,7 @@ class CBTHorizontalListTile extends StatelessWidget {
         data: Get.find<DeviceController>()
             .deviceData
             .value
-            .map((value) => DateFormat.jm().format(value.receivedtime!),
+            .map((value) => DateFormat.jm().format(value.receivedtime),
                 invalidDataPacket: (_) => "NA")
             .toString(),
       ),

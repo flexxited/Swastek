@@ -19,19 +19,31 @@ abstract class MentalStress with _$MentalStress {
 
 extension MentalStressX on MentalStress {
   EnLevels getLevels() {
-    if (bp.systolicLevel == EnLevels.normal(value: bp.systolic) &&
-        hr.vitalLevel == EnLevels.normal(value: hr.vital) &&
-        rr.respiratoryLevel == EnLevels.normal(value: rr.rr)) {
+    if ((bp.systolicLevel == EnLevels.normal(value: bp.systolic) ||
+            bp.systolicLevel == EnLevels.lowNormal(value: bp.systolic) ||
+            bp.systolicLevel == EnLevels.normalHigh(value: bp.systolic)) &&
+        (hr.vitalLevel == EnLevels.normal(value: hr.vital) ||
+            hr.vitalLevel == EnLevels.lowNormal(value: hr.vital) ||
+            hr.vitalLevel == EnLevels.normalHigh(value: hr.vital)) &&
+        (rr.respiratoryLevel == EnLevels.normal(value: rr.rr) ||
+            rr.respiratoryLevel == EnLevels.lowNormal(value: rr.rr) ||
+            rr.respiratoryLevel == EnLevels.normalHigh(value: rr.rr))) {
       debugPrint("1");
       return const EnLevels.normal(value: -1);
-    } else if (bp.systolicLevel == EnLevels.normal(value: bp.systolic) &&
+    } else if ((bp.systolicLevel == EnLevels.normal(value: bp.systolic) ||
+            bp.systolicLevel == EnLevels.lowNormal(value: bp.systolic) ||
+            bp.systolicLevel == EnLevels.normalHigh(value: bp.systolic)) &&
         hr.vitalLevel == EnLevels.high(value: hr.vital) &&
-        rr.respiratoryLevel == EnLevels.normal(value: rr.rr)) {
+        (rr.respiratoryLevel == EnLevels.normal(value: rr.rr) ||
+            rr.respiratoryLevel == EnLevels.lowNormal(value: rr.rr) ||
+            rr.respiratoryLevel == EnLevels.normalHigh(value: rr.rr))) {
       debugPrint("2");
       return const EnLevels.low(value: -1);
     } else if (bp.systolicLevel == EnLevels.high(value: bp.systolic) &&
         hr.vitalLevel == EnLevels.high(value: hr.vital) &&
-        rr.respiratoryLevel == EnLevels.normal(value: rr.rr)) {
+        (rr.respiratoryLevel == EnLevels.normal(value: rr.rr) ||
+            rr.respiratoryLevel == EnLevels.lowNormal(value: rr.rr) ||
+            rr.respiratoryLevel == EnLevels.normalHigh(value: rr.rr))) {
       debugPrint("3");
       return const EnLevels.normalHigh(value: -1);
     } else if (bp.systolicLevel == EnLevels.high(value: bp.systolic) &&
