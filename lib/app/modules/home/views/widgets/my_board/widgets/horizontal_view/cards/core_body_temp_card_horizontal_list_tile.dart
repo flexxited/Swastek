@@ -30,7 +30,7 @@ class CBTHorizontalListTile extends StatelessWidget {
             .deviceData
             .value
             .map((value) => DateFormat.jm().format(value.receivedtime!),
-                invalidDataPacket: (_) => null)
+                invalidDataPacket: (_) => "NA")
             .toString(),
       ),
       SizedBox(

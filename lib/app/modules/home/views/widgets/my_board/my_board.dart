@@ -29,7 +29,7 @@ class MyBoard extends GetView<MyBoardController> {
         .deviceData
         .value
         .map((value) => timeago.format(value.receivedtime!),
-            invalidDataPacket: (_) => null)
+            invalidDataPacket: (_) => "NA")
         .toString();
 
     final String final_timeAgo = timeAgo.contains("minutes") ||
@@ -40,7 +40,7 @@ class MyBoard extends GetView<MyBoardController> {
             .deviceData
             .value
             .map((value) => DateFormat.jm().format(value.receivedtime!),
-                invalidDataPacket: (_) => null)
+                invalidDataPacket: (_) => "NA")
             .toString();
 
     final String deviceName = Get.find<DeviceController>().deviceData.value.map(

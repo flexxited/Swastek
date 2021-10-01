@@ -57,7 +57,7 @@ class MentalStressVerticalListTile extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 30.w),
             child: Text(
-              "Last entry recorded at ${Get.find<DeviceController>().deviceData.value.map((value) => DateFormat.jm().format(value.receivedtime!), invalidDataPacket: (_) => null)}",
+              "Last entry recorded at ${Get.find<DeviceController>().deviceData.value.map((value) => DateFormat.jm().format(value.receivedtime!), invalidDataPacket: (_) => "NA")}",
               style: TextStyle(
                   fontSize: 12.sp,
                   fontFamily: "SeogeReg",
