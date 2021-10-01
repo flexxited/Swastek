@@ -162,7 +162,7 @@ class DeviceController extends GetxController {
     }
 
     characteresticSubscription ??= c.value.listen((event) {
-      deviceData.value = DeviceDataPacket.fromListInt(event);
+      deviceData.value = DeviceDataPacket.fromListInt(event, device.name);
     });
   }
 
