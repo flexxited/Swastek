@@ -33,13 +33,15 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
   const factory DeviceDataPacket.invalidDataPacket({required String msg}) =
       _InvalidDataPacket;
 
-  factory DeviceDataPacket.fromListInt(List<int> deviceDataPacket) {
+  factory DeviceDataPacket.fromListInt(
+      List<int> deviceDataPacket, String deviceName) {
     if (deviceDataPacket.length != 20) {
       return const DeviceDataPacket.invalidDataPacket(
           msg: 'byte length is not coorect');
     }
-    final deviceStat =
-        DeviceStat.fromFirst5ByteList(deviceDataPacket.getRange(0, 5).toList());
+    final deviceStat = DeviceStat.fromFirst5ByteList(
+        byteList: deviceDataPacket.getRange(0, 5).toList(),
+        deviceName: deviceName);
 
     return deviceStat.map(
       (value) {

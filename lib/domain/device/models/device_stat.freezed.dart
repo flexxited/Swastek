@@ -18,11 +18,13 @@ class _$DeviceStatTearOff {
 
   _DeviceStat call(
       {required SyncWord syncWord,
+      required Name deviceName,
       required int version,
       required WearStatus wearStatus,
       required int batterPercentage}) {
     return _DeviceStat(
       syncWord: syncWord,
+      deviceName: deviceName,
       version: version,
       wearStatus: wearStatus,
       batterPercentage: batterPercentage,
@@ -43,16 +45,16 @@ const $DeviceStat = _$DeviceStatTearOff();
 mixin _$DeviceStat {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(SyncWord syncWord, int version, WearStatus wearStatus,
-            int batterPercentage)
+    TResult Function(SyncWord syncWord, Name deviceName, int version,
+            WearStatus wearStatus, int batterPercentage)
         $default, {
     required TResult Function(String msg) empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(SyncWord syncWord, int version, WearStatus wearStatus,
-            int batterPercentage)?
+    TResult Function(SyncWord syncWord, Name deviceName, int version,
+            WearStatus wearStatus, int batterPercentage)?
         $default, {
     TResult Function(String msg)? empty,
     required TResult orElse(),
@@ -96,6 +98,7 @@ abstract class _$DeviceStatCopyWith<$Res> {
       __$DeviceStatCopyWithImpl<$Res>;
   $Res call(
       {SyncWord syncWord,
+      Name deviceName,
       int version,
       WearStatus wearStatus,
       int batterPercentage});
@@ -117,6 +120,7 @@ class __$DeviceStatCopyWithImpl<$Res> extends _$DeviceStatCopyWithImpl<$Res>
   @override
   $Res call({
     Object? syncWord = freezed,
+    Object? deviceName = freezed,
     Object? version = freezed,
     Object? wearStatus = freezed,
     Object? batterPercentage = freezed,
@@ -126,6 +130,10 @@ class __$DeviceStatCopyWithImpl<$Res> extends _$DeviceStatCopyWithImpl<$Res>
           ? _value.syncWord
           : syncWord // ignore: cast_nullable_to_non_nullable
               as SyncWord,
+      deviceName: deviceName == freezed
+          ? _value.deviceName
+          : deviceName // ignore: cast_nullable_to_non_nullable
+              as Name,
       version: version == freezed
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -161,12 +169,15 @@ class __$DeviceStatCopyWithImpl<$Res> extends _$DeviceStatCopyWithImpl<$Res>
 class _$_DeviceStat implements _DeviceStat {
   const _$_DeviceStat(
       {required this.syncWord,
+      required this.deviceName,
       required this.version,
       required this.wearStatus,
       required this.batterPercentage});
 
   @override
   final SyncWord syncWord;
+  @override
+  final Name deviceName;
   @override
   final int version;
   @override
@@ -176,7 +187,7 @@ class _$_DeviceStat implements _DeviceStat {
 
   @override
   String toString() {
-    return 'DeviceStat(syncWord: $syncWord, version: $version, wearStatus: $wearStatus, batterPercentage: $batterPercentage)';
+    return 'DeviceStat(syncWord: $syncWord, deviceName: $deviceName, version: $version, wearStatus: $wearStatus, batterPercentage: $batterPercentage)';
   }
 
   @override
@@ -186,6 +197,9 @@ class _$_DeviceStat implements _DeviceStat {
             (identical(other.syncWord, syncWord) ||
                 const DeepCollectionEquality()
                     .equals(other.syncWord, syncWord)) &&
+            (identical(other.deviceName, deviceName) ||
+                const DeepCollectionEquality()
+                    .equals(other.deviceName, deviceName)) &&
             (identical(other.version, version) ||
                 const DeepCollectionEquality()
                     .equals(other.version, version)) &&
@@ -201,6 +215,7 @@ class _$_DeviceStat implements _DeviceStat {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(syncWord) ^
+      const DeepCollectionEquality().hash(deviceName) ^
       const DeepCollectionEquality().hash(version) ^
       const DeepCollectionEquality().hash(wearStatus) ^
       const DeepCollectionEquality().hash(batterPercentage);
@@ -213,25 +228,27 @@ class _$_DeviceStat implements _DeviceStat {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(SyncWord syncWord, int version, WearStatus wearStatus,
-            int batterPercentage)
+    TResult Function(SyncWord syncWord, Name deviceName, int version,
+            WearStatus wearStatus, int batterPercentage)
         $default, {
     required TResult Function(String msg) empty,
   }) {
-    return $default(syncWord, version, wearStatus, batterPercentage);
+    return $default(
+        syncWord, deviceName, version, wearStatus, batterPercentage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(SyncWord syncWord, int version, WearStatus wearStatus,
-            int batterPercentage)?
+    TResult Function(SyncWord syncWord, Name deviceName, int version,
+            WearStatus wearStatus, int batterPercentage)?
         $default, {
     TResult Function(String msg)? empty,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(syncWord, version, wearStatus, batterPercentage);
+      return $default(
+          syncWord, deviceName, version, wearStatus, batterPercentage);
     }
     return orElse();
   }
@@ -262,11 +279,13 @@ class _$_DeviceStat implements _DeviceStat {
 abstract class _DeviceStat implements DeviceStat {
   const factory _DeviceStat(
       {required SyncWord syncWord,
+      required Name deviceName,
       required int version,
       required WearStatus wearStatus,
       required int batterPercentage}) = _$_DeviceStat;
 
   SyncWord get syncWord => throw _privateConstructorUsedError;
+  Name get deviceName => throw _privateConstructorUsedError;
   int get version => throw _privateConstructorUsedError;
   WearStatus get wearStatus => throw _privateConstructorUsedError;
   int get batterPercentage => throw _privateConstructorUsedError;
@@ -337,8 +356,8 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(SyncWord syncWord, int version, WearStatus wearStatus,
-            int batterPercentage)
+    TResult Function(SyncWord syncWord, Name deviceName, int version,
+            WearStatus wearStatus, int batterPercentage)
         $default, {
     required TResult Function(String msg) empty,
   }) {
@@ -348,8 +367,8 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(SyncWord syncWord, int version, WearStatus wearStatus,
-            int batterPercentage)?
+    TResult Function(SyncWord syncWord, Name deviceName, int version,
+            WearStatus wearStatus, int batterPercentage)?
         $default, {
     TResult Function(String msg)? empty,
     required TResult orElse(),
