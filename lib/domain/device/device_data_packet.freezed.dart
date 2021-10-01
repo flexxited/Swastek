@@ -26,7 +26,8 @@ class _$DeviceDataPacketTearOff {
       required StepCount stepCount,
       required FallDetection fallDetection,
       required HeatStress heatStres,
-      required Posture posture}) {
+      required Posture posture,
+      required DateTime receivedtime}) {
     return _DeviceDataPacket(
       deviceStat: deviceStat,
       heartRate: heartRate,
@@ -38,6 +39,7 @@ class _$DeviceDataPacketTearOff {
       fallDetection: fallDetection,
       heatStres: heatStres,
       posture: posture,
+      receivedtime: receivedtime,
     );
   }
 
@@ -65,7 +67,8 @@ mixin _$DeviceDataPacket {
             StepCount stepCount,
             FallDetection fallDetection,
             HeatStress heatStres,
-            Posture posture)
+            Posture posture,
+            DateTime receivedtime)
         $default, {
     required TResult Function(String msg) invalidDataPacket,
   }) =>
@@ -82,7 +85,8 @@ mixin _$DeviceDataPacket {
             StepCount stepCount,
             FallDetection fallDetection,
             HeatStress heatStres,
-            Posture posture)?
+            Posture posture,
+            DateTime receivedtime)?
         $default, {
     TResult Function(String msg)? invalidDataPacket,
     required TResult orElse(),
@@ -135,7 +139,8 @@ abstract class _$DeviceDataPacketCopyWith<$Res> {
       StepCount stepCount,
       FallDetection fallDetection,
       HeatStress heatStres,
-      Posture posture});
+      Posture posture,
+      DateTime receivedtime});
 
   $DeviceStatCopyWith<$Res> get deviceStat;
   $HeartRateCopyWith<$Res> get heartRate;
@@ -172,6 +177,7 @@ class __$DeviceDataPacketCopyWithImpl<$Res>
     Object? fallDetection = freezed,
     Object? heatStres = freezed,
     Object? posture = freezed,
+    Object? receivedtime = freezed,
   }) {
     return _then(_DeviceDataPacket(
       deviceStat: deviceStat == freezed
@@ -214,6 +220,10 @@ class __$DeviceDataPacketCopyWithImpl<$Res>
           ? _value.posture
           : posture // ignore: cast_nullable_to_non_nullable
               as Posture,
+      receivedtime: receivedtime == freezed
+          ? _value.receivedtime
+          : receivedtime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 
@@ -304,7 +314,8 @@ class _$_DeviceDataPacket
       required this.stepCount,
       required this.fallDetection,
       required this.heatStres,
-      required this.posture});
+      required this.posture,
+      required this.receivedtime});
 
   @override
   final DeviceStat deviceStat;
@@ -326,10 +337,12 @@ class _$_DeviceDataPacket
   final HeatStress heatStres;
   @override
   final Posture posture;
+  @override
+  final DateTime receivedtime;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DeviceDataPacket(deviceStat: $deviceStat, heartRate: $heartRate, spo2: $spo2, respiratoryRate: $respiratoryRate, bloodPressure: $bloodPressure, coreBodyTemperature: $coreBodyTemperature, stepCount: $stepCount, fallDetection: $fallDetection, heatStres: $heatStres, posture: $posture)';
+    return 'DeviceDataPacket(deviceStat: $deviceStat, heartRate: $heartRate, spo2: $spo2, respiratoryRate: $respiratoryRate, bloodPressure: $bloodPressure, coreBodyTemperature: $coreBodyTemperature, stepCount: $stepCount, fallDetection: $fallDetection, heatStres: $heatStres, posture: $posture, receivedtime: $receivedtime)';
   }
 
   @override
@@ -346,7 +359,8 @@ class _$_DeviceDataPacket
       ..add(DiagnosticsProperty('stepCount', stepCount))
       ..add(DiagnosticsProperty('fallDetection', fallDetection))
       ..add(DiagnosticsProperty('heatStres', heatStres))
-      ..add(DiagnosticsProperty('posture', posture));
+      ..add(DiagnosticsProperty('posture', posture))
+      ..add(DiagnosticsProperty('receivedtime', receivedtime));
   }
 
   @override
@@ -380,7 +394,11 @@ class _$_DeviceDataPacket
                 const DeepCollectionEquality()
                     .equals(other.heatStres, heatStres)) &&
             (identical(other.posture, posture) ||
-                const DeepCollectionEquality().equals(other.posture, posture)));
+                const DeepCollectionEquality()
+                    .equals(other.posture, posture)) &&
+            (identical(other.receivedtime, receivedtime) ||
+                const DeepCollectionEquality()
+                    .equals(other.receivedtime, receivedtime)));
   }
 
   @override
@@ -395,7 +413,8 @@ class _$_DeviceDataPacket
       const DeepCollectionEquality().hash(stepCount) ^
       const DeepCollectionEquality().hash(fallDetection) ^
       const DeepCollectionEquality().hash(heatStres) ^
-      const DeepCollectionEquality().hash(posture);
+      const DeepCollectionEquality().hash(posture) ^
+      const DeepCollectionEquality().hash(receivedtime);
 
   @JsonKey(ignore: true)
   @override
@@ -415,12 +434,23 @@ class _$_DeviceDataPacket
             StepCount stepCount,
             FallDetection fallDetection,
             HeatStress heatStres,
-            Posture posture)
+            Posture posture,
+            DateTime receivedtime)
         $default, {
     required TResult Function(String msg) invalidDataPacket,
   }) {
-    return $default(deviceStat, heartRate, spo2, respiratoryRate, bloodPressure,
-        coreBodyTemperature, stepCount, fallDetection, heatStres, posture);
+    return $default(
+        deviceStat,
+        heartRate,
+        spo2,
+        respiratoryRate,
+        bloodPressure,
+        coreBodyTemperature,
+        stepCount,
+        fallDetection,
+        heatStres,
+        posture,
+        receivedtime);
   }
 
   @override
@@ -436,7 +466,8 @@ class _$_DeviceDataPacket
             StepCount stepCount,
             FallDetection fallDetection,
             HeatStress heatStres,
-            Posture posture)?
+            Posture posture,
+            DateTime receivedtime)?
         $default, {
     TResult Function(String msg)? invalidDataPacket,
     required TResult orElse(),
@@ -452,7 +483,8 @@ class _$_DeviceDataPacket
           stepCount,
           fallDetection,
           heatStres,
-          posture);
+          posture,
+          receivedtime);
     }
     return orElse();
   }
@@ -491,7 +523,8 @@ abstract class _DeviceDataPacket implements DeviceDataPacket {
       required StepCount stepCount,
       required FallDetection fallDetection,
       required HeatStress heatStres,
-      required Posture posture}) = _$_DeviceDataPacket;
+      required Posture posture,
+      required DateTime receivedtime}) = _$_DeviceDataPacket;
 
   DeviceStat get deviceStat => throw _privateConstructorUsedError;
   HeartRate get heartRate => throw _privateConstructorUsedError;
@@ -504,6 +537,7 @@ abstract class _DeviceDataPacket implements DeviceDataPacket {
   FallDetection get fallDetection => throw _privateConstructorUsedError;
   HeatStress get heatStres => throw _privateConstructorUsedError;
   Posture get posture => throw _privateConstructorUsedError;
+  DateTime get receivedtime => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DeviceDataPacketCopyWith<_DeviceDataPacket> get copyWith =>
       throw _privateConstructorUsedError;
@@ -594,7 +628,8 @@ class _$_InvalidDataPacket
             StepCount stepCount,
             FallDetection fallDetection,
             HeatStress heatStres,
-            Posture posture)
+            Posture posture,
+            DateTime receivedtime)
         $default, {
     required TResult Function(String msg) invalidDataPacket,
   }) {
@@ -614,7 +649,8 @@ class _$_InvalidDataPacket
             StepCount stepCount,
             FallDetection fallDetection,
             HeatStress heatStres,
-            Posture posture)?
+            Posture posture,
+            DateTime receivedtime)?
         $default, {
     TResult Function(String msg)? invalidDataPacket,
     required TResult orElse(),

@@ -28,6 +28,7 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
     required FallDetection fallDetection,
     required HeatStress heatStres,
     required Posture posture,
+    required DateTime receivedtime,
   }) = _DeviceDataPacket;
 
   const factory DeviceDataPacket.invalidDataPacket({required String msg}) =
@@ -74,6 +75,7 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
           heatStres: HeatStress.from1Byte(deviceDataPacket[17]),
           posture: Posture.from2ByteList(
               bytes: deviceDataPacket.getRange(18, 20).toList()),
+          receivedtime: DateTime.now(),
         );
       },
       empty: (_) {
@@ -114,6 +116,7 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
               rightAngle: 45,
               postureStatus: PostureStatus.badPosture(),
             ),
+            receivedtime: DateTime.now(),
           );
   }
 }
