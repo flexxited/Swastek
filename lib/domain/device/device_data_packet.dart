@@ -103,7 +103,7 @@ abstract class DeviceDataPacket with _$DeviceDataPacket {
               systolicLevel: 121.getSystolicLevels(),
               diastolic: 78,
             ),
-            coreBodyTemperature: const CoreBodyTemperature(cbt: 36.567),
+            coreBodyTemperature: const CoreBodyTemperature(cbt: 36.5),
             stepCount: const StepCount(steps: 9000),
             fallDetection: const FallDetection(isFall: true),
             heatStres: const HeatStress(hsRisk: EnHeatStressRisk.highRisk()),
